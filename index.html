@@ -1001,10 +1001,6 @@
                 min-height: 150px !important;
             }
 
-            /* Hide side panels on mobile */
-            .side-panel.visible-panel {
-                display: none !important;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1654,14 +1650,17 @@
             const vp = viewpoints[sectionId];
             if (!vp) return;
 
-            // On mobile, hide panels
+            // Always show/hide 3D signs (applies to both mobile and desktop)
+            Object.keys(signs).forEach(key => {
+                if (key === sectionId) signs[key].element.classList.add('visible-sign');
+                else signs[key].element.classList.remove('visible-sign');
+            });
+
             if (window.innerWidth < 900) {
+                // Mobile: hide side panels (HUD panels on the right), keep 3D signs visible
                 document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('visible-panel'));
             } else {
-                Object.keys(signs).forEach(key => {
-                    if (key === sectionId) signs[key].element.classList.add('visible-sign');
-                    else signs[key].element.classList.remove('visible-sign');
-                });
+                // Desktop: show side panel + stagger animation
                 const ap = document.querySelector(`.side-panel[data-panel="${sectionId}"]`);
                 if (ap) {
                     ap.querySelectorAll('.hud-stagger > *').forEach((item, i) => {
