@@ -53,7 +53,6 @@
             user-select: none;
         }
 
-        /* 3D Background Canvas */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -68,7 +67,6 @@
             cursor: grabbing;
         }
 
-        /* UI Layer - Overlay Navigation */
         #ui-layer {
             position: fixed;
             top: 0;
@@ -81,7 +79,6 @@
             flex-direction: column;
         }
 
-        /* Navigation */
         nav {
             width: 100%;
             background: linear-gradient(to bottom, rgba(2, 2, 2, 0.8), transparent);
@@ -134,7 +131,6 @@
             color: var(--accent-primary);
         }
 
-        /* Hamburger menu for mobile */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -167,7 +163,6 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Mobile nav overlay */
         .mobile-nav-overlay {
             display: none;
             position: fixed;
@@ -197,7 +192,6 @@
             padding: 12px;
         }
 
-        /* 3D Embedded Signs (CSS3D) */
         #css-container {
             position: absolute;
             top: 0;
@@ -419,9 +413,7 @@
             stroke-width: 2;
         }
 
-        /* ==========================================
-           CINEMATIC HERO INTRO
-           ========================================== */
+        /* Hero */
         #hero-intro {
             position: fixed;
             bottom: 40px;
@@ -475,11 +467,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(56, 189, 248, 0.03) 2px,
-                    rgba(56, 189, 248, 0.03) 4px);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(56, 189, 248, 0.03) 2px, rgba(56, 189, 248, 0.03) 4px);
             pointer-events: none;
             z-index: 1;
             animation: scanlineDrift 8s linear infinite;
@@ -577,9 +565,7 @@
             animation: holoFlicker 4s ease-in-out infinite;
         }
 
-        /* ==========================================
-           HUD SIDE PANELS
-           ========================================== */
+        /* HUD panels */
         .side-panel {
             position: absolute;
             right: -420px;
@@ -607,11 +593,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(56, 189, 248, 0.02) 2px,
-                    rgba(56, 189, 248, 0.02) 4px);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(56, 189, 248, 0.02) 2px, rgba(56, 189, 248, 0.02) 4px);
             pointer-events: none;
             z-index: 0;
             animation: scanlineDrift 10s linear infinite;
@@ -927,9 +909,6 @@
             border-radius: 2px;
         }
 
-        /* ==========================================
-           GOALS PANEL — TYPEWRITER TEXT
-           ========================================== */
         .goals-typewriter {
             font-family: 'Courier New', monospace;
             font-size: 0.85rem;
@@ -949,9 +928,7 @@
             opacity: 1;
         }
 
-        /* ==========================================
-           MOBILE RESPONSIVE
-           ========================================== */
+        /* MOBILE */
         @media (max-width: 900px) {
             .nav-links {
                 display: none;
@@ -995,35 +972,6 @@
                 font-size: 0.55rem !important;
             }
 
-            .side-panel.visible-panel {
-                width: calc(100vw - 16px) !important;
-                right: 0 !important;
-                border-radius: 4px 0 0 4px !important;
-                max-height: 80vh !important;
-                top: 55% !important;
-            }
-
-            .side-panel {
-                width: calc(100vw - 16px) !important;
-            }
-
-            .hud-content {
-                padding: 20px 18px 18px !important;
-            }
-
-            .hud-header h3 {
-                font-size: 1.1rem !important;
-            }
-
-            .side-panel h4 {
-                font-size: 0.9rem !important;
-            }
-
-            .side-panel p,
-            .side-panel ul {
-                font-size: 0.8rem !important;
-            }
-
             .instruction-toast {
                 font-size: 0.7rem !important;
                 padding: 8px 16px !important;
@@ -1052,15 +1000,14 @@
                 font-size: 0.75rem !important;
                 min-height: 150px !important;
             }
+
+            /* Hide side panels on mobile */
+            .side-panel.visible-panel {
+                display: none !important;
+            }
         }
 
         @media (max-width: 480px) {
-            .side-panel.visible-panel {
-                width: 100vw !important;
-                border-radius: 0 !important;
-                max-height: 75vh !important;
-            }
-
             #hero-intro .hero-card .hero-name {
                 font-size: 1.4rem !important;
             }
@@ -1083,9 +1030,7 @@
             }
         }
 
-        /* ==========================================
-           KEYFRAME ANIMATIONS
-           ========================================== */
+        /* KEYFRAMES */
         @keyframes glitchText {
             0% {
                 text-shadow: 2px 0 #ff0040, -2px 0 #00ffff;
@@ -1201,20 +1146,18 @@
 
 <body>
     <div id="loading-screen"
-        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--bg-color); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s;">
-        <h2 style="font-family: var(--font-display); color: var(--text-primary); margin-bottom: 20px;">Entering the
-            City...</h2>
-        <div
-            style="width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
+        style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:var(--bg-color);z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 0.5s;">
+        <h2 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:20px;">Entering the City...
+        </h2>
+        <div style="width:200px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;">
             <div id="loading-progress"
-                style="width: 0%; height: 100%; background: var(--accent-primary); transition: width 0.1s;"></div>
+                style="width:0%;height:100%;background:var(--accent-primary);transition:width 0.1s;"></div>
         </div>
     </div>
 
     <canvas id="bg-canvas"></canvas>
     <div id="css-container"></div>
 
-    <!-- Cinematic Hero Intro -->
     <div id="hero-intro">
         <div class="hero-card">
             <div class="hero-sys-label">SYS://IDENTITY.INIT</div>
@@ -1225,7 +1168,6 @@
         </div>
     </div>
 
-    <!-- Mobile Nav Overlay -->
     <div class="mobile-nav-overlay" id="mobile-nav">
         <div class="nav-link" data-target="about">About</div>
         <div class="nav-link" data-target="experience">Experience</div>
@@ -1248,9 +1190,7 @@
                     <div class="nav-link" data-target="goals">Goals</div>
                 </div>
                 <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </nav>
@@ -1261,8 +1201,7 @@
             <div class="hud-corner bottom-left"></div>
             <div class="hud-corner bottom-right"></div>
             <div class="hud-content">
-                <div class="hud-header">
-                    <span class="hud-sys-tag">SYS://PROFILE</span>
+                <div class="hud-header"><span class="hud-sys-tag">SYS://PROFILE</span>
                     <h3>Professional Summary</h3>
                 </div>
                 <div class="hud-stagger">
@@ -1270,15 +1209,14 @@
                         FlexCube 14.8 core banking implementations. Currently, I am contributing to the NRB Bank
                         FlexCube upgradation project.</p>
                     <p class="secondary">I combine a deep understanding of core banking systems with a strong technical
-                        foundation in AI/ML, data analysis, and full-stack development, with a proven track record of
-                        engineering autonomous AI agents to optimize complex business workflows.</p>
+                        foundation in AI/ML, data analysis, and full-stack development.</p>
                     <div class="contact-info">
                         <span>📧 najmulalamrivan4@gmail.com</span>
                         <span>📞 +880 1704-461723</span>
                         <span>📍 Dhaka, Bangladesh</span>
-                        <span>🔗 <a href="https://github.com/Najmul193" target="_blank">github.com/Najmul193</a></span>
-                        <span>🔗 <a href="https://linkedin.com/in/s-m-najmul-alam"
-                                target="_blank">linkedin.com/in/s-m-najmul-alam</a></span>
+                        <span>🔗 <a href="https://github.com/Najmul193">github.com/Najmul193</a></span>
+                        <span>🔗 <a
+                                href="https://linkedin.com/in/s-m-najmul-alam">linkedin.com/in/s-m-najmul-alam</a></span>
                     </div>
                 </div>
             </div>
@@ -1290,8 +1228,7 @@
             <div class="hud-corner bottom-left"></div>
             <div class="hud-corner bottom-right"></div>
             <div class="hud-content">
-                <div class="hud-header">
-                    <span class="hud-sys-tag">SYS://CAREER</span>
+                <div class="hud-header"><span class="hud-sys-tag">SYS://CAREER</span>
                     <h3>Experience</h3>
                 </div>
                 <div class="hud-stagger">
@@ -1300,35 +1237,28 @@
                         <div class="company">Data Edge Ltd. | Mar 2026 - Present</div>
                         <ul>
                             <li><strong>Oracle FlexCube 14.8:</strong> Driving requirement gap analysis for NRB Bank,
-                                mapping banking workflows against FlexCube functional capabilities across Core, Credit,
-                                and Treasury domains.</li>
-                            <li><strong>Parameterisation & UAT:</strong> Supporting parameterisation with Oracle teams
-                                and facilitating structured UAT sessions to validate system behavior.</li>
+                                mapping workflows across Core, Credit, and Treasury domains.</li>
+                            <li><strong>Parameterisation & UAT:</strong> Supporting parameterisation and facilitating
+                                structured UAT sessions.</li>
                             <li><strong>AI Automation:</strong> Engineered an AI-powered requirement synchronisation
-                                agent automating cross-referencing of bank assessment data against FlexCube
-                                documentation.</li>
-                            <li><strong>Data Analysis:</strong> Analyzing gap datasets to surface insights and support
-                                evidence-based implementation decisions.</li>
-                            <li><strong>Flexy Platform:</strong> Building an AI-Powered Learning Platform replacing
-                                static documents with interactive Q&A, PDF-to-LLM sync, and adaptive quizzes.</li>
+                                agent.</li>
+                            <li><strong>Flexy Platform:</strong> Building an AI-Powered Learning Platform with
+                                PDF-to-LLM sync and adaptive quizzes.</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <h4>Website Maintenance Executive</h4>
                         <div class="company">NexonicBD | Jun 2025 - Jan 2026</div>
                         <ul>
-                            <li>Maintained and optimized the company e-commerce platform to ensure high uptime,
-                                stability, and seamless order processing.</li>
-                            <li>Collaborated with cross-functional teams to resolve technical bugs and improve
-                                responsive UI layout.</li>
+                            <li>Maintained e-commerce platform ensuring high uptime and stability.</li>
+                            <li>Collaborated with teams to fix bugs and improve responsive UI.</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <h4>Student Tutor</h4>
                         <div class="company">BRAC University | 2024 - 2025</div>
                         <ul>
-                            <li>Conducted interactive tutoring sessions in Linear Algebra and Fourier Analysis, helping
-                                students master complex mathematical modeling and analytical skills.</li>
+                            <li>Tutored Linear Algebra and Fourier Analysis.</li>
                         </ul>
                     </div>
                 </div>
@@ -1341,35 +1271,29 @@
             <div class="hud-corner bottom-left"></div>
             <div class="hud-corner bottom-right"></div>
             <div class="hud-content">
-                <div class="hud-header">
-                    <span class="hud-sys-tag">SYS://PROJECTS</span>
+                <div class="hud-header"><span class="hud-sys-tag">SYS://PROJECTS</span>
                     <h3>Featured Projects</h3>
                 </div>
                 <div class="hud-stagger">
                     <div class="project-item">
                         <h4>Oracle FlexCube AI Learning Platform (Flexy)</h4>
                         <div class="tech">Next.js 15, TypeScript, Google Gemini, Node.js</div>
-                        <p>Architected a full-stack AI learning platform for FlexCube 14.8, featuring bi-directional
-                            PDF-to-LLM synchronization, fault-tolerant API orchestration with circuit-breaker key
-                            rotation, and a non-deterministic adaptive quiz engine.</p>
+                        <p>AI learning platform for FlexCube 14.8 with PDF-to-LLM sync and adaptive quiz engine.</p>
                     </div>
                     <div class="project-item">
-                        <h4>Machine Vision Quality Assurance System</h4>
-                        <div class="tech">Python, TensorFlow, EfficientNet-B0, Jetson Nano, STM32</div>
-                        <p>Led the ML pipeline for defect classification. Deployed models on Jetson Nano, integrating
-                            with STM32 via UART/CAN for sub-400ms real-time sorting.</p>
+                        <h4>Machine Vision QA System</h4>
+                        <div class="tech">Python, TensorFlow, Jetson Nano, STM32</div>
+                        <p>ML pipeline for defect classification deployed on Jetson Nano with sub-400ms latency.</p>
                     </div>
                     <div class="project-item">
                         <h4>Destination Diary</h4>
-                        <div class="tech">MERN Stack, AI Integration, TailwindCSS</div>
-                        <p>Built a full-stack web app with an AI-driven recommendation engine for personalized travel
-                            itineraries.</p>
+                        <div class="tech">MERN Stack, AI, TailwindCSS</div>
+                        <p>Full-stack app with AI-driven travel recommendation engine.</p>
                     </div>
                     <div class="project-item">
                         <h4>LGG Brain MRI Segmentation</h4>
-                        <div class="tech">Python, CNN, Deep Learning (PyTorch/Keras)</div>
-                        <p>Implemented U-Net based CNN for automated brain tumor segmentation using the TCGA-LGG
-                            dataset.</p>
+                        <div class="tech">Python, CNN, PyTorch</div>
+                        <p>U-Net based brain tumor segmentation using TCGA-LGG dataset.</p>
                     </div>
                 </div>
             </div>
@@ -1381,23 +1305,18 @@
             <div class="hud-corner bottom-left"></div>
             <div class="hud-corner bottom-right"></div>
             <div class="hud-content">
-                <div class="hud-header">
-                    <span class="hud-sys-tag">SYS://EDU</span>
+                <div class="hud-header"><span class="hud-sys-tag">SYS://EDU</span>
                     <h3>Education</h3>
                 </div>
                 <div class="hud-stagger">
                     <div class="timeline-item">
-                        <h4>B.Sc. in Computer Science & Engineering</h4>
+                        <h4>B.Sc. Computer Science & Engineering</h4>
                         <div class="company">BRAC University | 2021 - 2026</div>
-                        <div class="highlight">CGPA: 3.86/4.00 | Merit-Based Scholarship (2022 - 2026)</div>
-                        <p><strong>Thesis:</strong> Developing and Executing a Programmable Advanced Machine Vision
-                            System for Industrial Product Quality Assurance</p>
-                        <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);"><strong>Key
-                                Coursework:</strong> Data Structures & Algorithms, Artificial Intelligence, Machine
-                            Learning, Database Systems, Software Engineering, Computer Networks</p>
+                        <div class="highlight">CGPA: 3.86/4.00 | Merit Scholarship 2022-2026</div>
+                        <p><strong>Thesis:</strong> Machine Vision System for Industrial QA</p>
                     </div>
                     <div class="timeline-item">
-                        <h4>Higher Secondary Certificate (HSC) — Science</h4>
+                        <h4>HSC (Science)</h4>
                         <div class="company">Government Science College | 2020</div>
                         <div class="highlight">GPA: 5.00/5.00</div>
                     </div>
@@ -1411,15 +1330,13 @@
             <div class="hud-corner bottom-left"></div>
             <div class="hud-corner bottom-right"></div>
             <div class="hud-content">
-                <div class="hud-header">
-                    <span class="hud-sys-tag">SYS://SKILLS</span>
+                <div class="hud-header"><span class="hud-sys-tag">SYS://SKILLS</span>
                     <h3>Technical Expertise</h3>
                 </div>
                 <div class="hud-stagger">
                     <div class="skill-category" data-level="92">
                         <h4>Banking & ERP</h4>
-                        <p>Oracle FlexCube, Requirement Gap Analysis, UAT Facilitation, Parameterisation, BFSI Domain
-                        </p>
+                        <p>Oracle FlexCube, Gap Analysis, UAT, BFSI</p>
                         <div class="skill-bar-container">
                             <div class="skill-bar-track">
                                 <div class="skill-bar-fill"></div>
@@ -1427,8 +1344,8 @@
                         </div>
                     </div>
                     <div class="skill-category" data-level="88">
-                        <h4>AI, ML & Data Analysis</h4>
-                        <p>TensorFlow, Scikit-learn, CNNs, Transfer Learning, OpenCV, AI Agents, Pandas, SQL</p>
+                        <h4>AI, ML & Data</h4>
+                        <p>TensorFlow, CNNs, OpenCV, AI Agents, Pandas, SQL</p>
                         <div class="skill-bar-container">
                             <div class="skill-bar-track">
                                 <div class="skill-bar-fill"></div>
@@ -1436,8 +1353,8 @@
                         </div>
                     </div>
                     <div class="skill-category" data-level="85">
-                        <h4>Development & Databases</h4>
-                        <p>Next.js, TypeScript, MERN, PHP, FastAPI, Streamlit, MySQL, MongoDB</p>
+                        <h4>Development</h4>
+                        <p>Next.js, TypeScript, MERN, FastAPI, MySQL</p>
                         <div class="skill-bar-container">
                             <div class="skill-bar-track">
                                 <div class="skill-bar-fill"></div>
@@ -1446,7 +1363,7 @@
                     </div>
                     <div class="skill-category" data-level="78">
                         <h4>Embedded & IoT</h4>
-                        <p>STM32, Jetson Nano, UART, CAN, GPIO, Embedded C</p>
+                        <p>STM32, Jetson Nano, UART, CAN, Embedded C</p>
                         <div class="skill-bar-container">
                             <div class="skill-bar-track">
                                 <div class="skill-bar-fill"></div>
@@ -1464,7 +1381,7 @@
                     </div>
                     <div class="skill-category" data-level="95">
                         <h4>Soft Skills</h4>
-                        <p>Analytical Thinking, Stakeholder Communication, Collaboration, Problem Solving</p>
+                        <p>Analytical Thinking, Communication, Collaboration</p>
                         <div class="skill-bar-container">
                             <div class="skill-bar-track">
                                 <div class="skill-bar-fill"></div>
@@ -1475,15 +1392,13 @@
             </div>
         </div>
 
-        <!-- ===== GOALS PANEL ===== -->
         <div id="goals-details" class="side-panel" data-panel="goals">
             <div class="hud-corner top-left"></div>
             <div class="hud-corner top-right"></div>
             <div class="hud-corner bottom-left"></div>
             <div class="hud-corner bottom-right"></div>
             <div class="hud-content">
-                <div class="hud-header">
-                    <span class="hud-sys-tag">SYS://ASPIRATIONS</span>
+                <div class="hud-header"><span class="hud-sys-tag">SYS://ASPIRATIONS</span>
                     <h3>Vision & Purpose</h3>
                 </div>
                 <div class="goals-typewriter" id="goals-text"></div>
@@ -1497,96 +1412,64 @@
             <path d="M12 16v-4" />
             <path d="M12 8h.01" />
         </svg>
-        <span class="toast-text">Scroll to navigate • Drag to orbit</span>
+        <span>Scroll to navigate • Drag to orbit</span>
     </div>
 
     <script>
-        // ==========================================
-        // Three.js Interactive Setup
-        // ==========================================
         const canvas = document.querySelector('#bg-canvas');
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x000000);
-
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 100);
         camera.position.set(5, 2, 8);
 
-        // ==========================================
-        // Procedural Starfield & Nebulae
-        // ==========================================
         function createCircleTexture() {
-            const c = document.createElement('canvas');
-            c.width = 32; c.height = 32;
+            const c = document.createElement('canvas'); c.width = 32; c.height = 32;
             const ctx = c.getContext('2d');
             const g = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-            g.addColorStop(0, 'rgba(255,255,255,1)');
-            g.addColorStop(0.2, 'rgba(255,255,255,0.8)');
-            g.addColorStop(1, 'rgba(255,255,255,0)');
-            ctx.fillStyle = g;
-            ctx.fillRect(0, 0, 32, 32);
+            g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.2, 'rgba(255,255,255,0.8)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = g; ctx.fillRect(0, 0, 32, 32);
             return new THREE.CanvasTexture(c);
         }
         function createNebulaTexture() {
-            const c = document.createElement('canvas');
-            c.width = 128; c.height = 128;
+            const c = document.createElement('canvas'); c.width = 128; c.height = 128;
             const ctx = c.getContext('2d');
             const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-            g.addColorStop(0, 'rgba(255,255,255,0.6)');
-            g.addColorStop(0.3, 'rgba(255,255,255,0.2)');
-            g.addColorStop(1, 'rgba(255,255,255,0)');
-            ctx.fillStyle = g;
-            ctx.fillRect(0, 0, 128, 128);
+            g.addColorStop(0, 'rgba(255,255,255,0.6)'); g.addColorStop(0.3, 'rgba(255,255,255,0.2)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
             return new THREE.CanvasTexture(c);
         }
 
         const starTexture = createCircleTexture();
         const nebulaTexture = createNebulaTexture();
-
         const starCount = 8000;
         const starGeometry = new THREE.BufferGeometry();
         const starPositions = new Float32Array(starCount * 3);
         const starColors = new Float32Array(starCount * 3);
         const starSizes = new Float32Array(starCount);
-        const colorsList = [
-            new THREE.Color('#ffffff'), new THREE.Color('#cfe8f3'), new THREE.Color('#a5f3fc'),
-            new THREE.Color('#c4b5fd'), new THREE.Color('#38bdf8'), new THREE.Color('#e0f2fe')
-        ];
-        const starBaseColors = [];
-        const starBaseSizes = [];
-        const starTwinkleSpeeds = [];
-        const starTwinklePhases = [];
+        const colorsList = [new THREE.Color('#ffffff'), new THREE.Color('#cfe8f3'), new THREE.Color('#a5f3fc'), new THREE.Color('#c4b5fd'), new THREE.Color('#38bdf8'), new THREE.Color('#e0f2fe')];
+        const starBaseColors = [], starBaseSizes = [], starTwinkleSpeeds = [], starTwinklePhases = [];
         for (let i = 0; i < starCount; i++) {
-            const u = Math.random(), v = Math.random();
-            const theta = u * 2.0 * Math.PI, phi = Math.acos(2.0 * v - 1.0);
-            const r = 35 + Math.random() * 30;
-            starPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-            starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-            starPositions[i * 3 + 2] = r * Math.cos(phi);
+            const u = Math.random(), v = Math.random(), theta = u * 2.0 * Math.PI, phi = Math.acos(2.0 * v - 1.0), r = 35 + Math.random() * 30;
+            starPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta); starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta); starPositions[i * 3 + 2] = r * Math.cos(phi);
             const col = colorsList[Math.floor(Math.random() * colorsList.length)];
             starColors[i * 3] = col.r; starColors[i * 3 + 1] = col.g; starColors[i * 3 + 2] = col.b;
             starBaseColors.push(col.clone());
-            const baseSize = 0.12 + Math.random() * 0.5;
-            starBaseSizes.push(baseSize);
-            starSizes[i] = baseSize;
-            starTwinkleSpeeds.push(0.3 + Math.random() * 3.5);
-            starTwinklePhases.push(Math.random() * Math.PI * 2);
+            const bs = 0.12 + Math.random() * 0.5; starBaseSizes.push(bs); starSizes[i] = bs;
+            starTwinkleSpeeds.push(0.3 + Math.random() * 3.5); starTwinklePhases.push(Math.random() * Math.PI * 2);
         }
         starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
         starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
         starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
-
         const starMaterial = new THREE.ShaderMaterial({
             uniforms: { starTexture: { value: starTexture } },
-            vertexShader: `attribute float size; varying vec3 vColor; void main(){vColor=color;vec4 mvPosition=modelViewMatrix*vec4(position,1.0);gl_PointSize=size*(300.0/-mvPosition.z);gl_Position=projectionMatrix*mvPosition;}`,
-            fragmentShader: `uniform sampler2D starTexture;varying vec3 vColor;void main(){gl_FragColor=vec4(vColor,1.0)*texture2D(starTexture,gl_PointCoord);}`,
+            vertexShader: 'attribute float size; varying vec3 vColor; void main(){vColor=color;vec4 mvPosition=modelViewMatrix*vec4(position,1.0);gl_PointSize=size*(300.0/-mvPosition.z);gl_Position=projectionMatrix*mvPosition;}',
+            fragmentShader: 'uniform sampler2D starTexture; varying vec3 vColor; void main(){gl_FragColor=vec4(vColor,1.0)*texture2D(starTexture,gl_PointCoord);}',
             transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, vertexColors: true
         });
         const starField = new THREE.Points(starGeometry, starMaterial);
         scene.add(starField);
-
         const mouseNDC = new THREE.Vector2(9999, 9999);
-        const raycaster = new THREE.Raycaster();
-        raycaster.params.Points.threshold = 1.5;
+        const raycaster = new THREE.Raycaster(); raycaster.params.Points.threshold = 1.5;
 
         const nebulaCount = 20;
         const nebulaGeometry = new THREE.BufferGeometry();
@@ -1595,9 +1478,7 @@
         const nebulaColorList = [new THREE.Color('#6366f1'), new THREE.Color('#a855f7'), new THREE.Color('#0284c7'), new THREE.Color('#d946ef')];
         for (let i = 0; i < nebulaCount; i++) {
             const r = 25 + Math.random() * 25, theta = Math.random() * 2.0 * Math.PI, phi = Math.acos(2.0 * Math.random() - 1.0);
-            nebulaPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-            nebulaPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-            nebulaPositions[i * 3 + 2] = r * Math.cos(phi);
+            nebulaPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta); nebulaPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta); nebulaPositions[i * 3 + 2] = r * Math.cos(phi);
             const col = nebulaColorList[Math.floor(Math.random() * nebulaColorList.length)];
             nebulaColors[i * 3] = col.r; nebulaColors[i * 3 + 1] = col.g; nebulaColors[i * 3 + 2] = col.b;
         }
@@ -1620,14 +1501,11 @@
         let skySphere;
         const textureLoader = new THREE.TextureLoader();
         textureLoader.load('space_bg.png', function (texture) {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            texture.encoding = THREE.sRGBEncoding;
-            const skyGeo = new THREE.SphereGeometry(70, 32, 32);
+            texture.mapping = THREE.EquirectangularReflectionMapping; texture.encoding = THREE.sRGBEncoding;
             const skyMat = new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide, transparent: true, opacity: 0.05 });
-            skySphere = new THREE.Mesh(skyGeo, skyMat);
-            scene.add(skySphere);
-            scene.environment = texture;
-        }, undefined, function (err) { console.error("Failed to load space_bg.png", err); });
+            skySphere = new THREE.Mesh(new THREE.SphereGeometry(70, 32, 32), skyMat);
+            scene.add(skySphere); scene.environment = texture;
+        }, undefined, function (err) { console.error("space_bg.png failed", err); });
 
         const cssContainer = document.getElementById('css-container');
         const cssRenderer = new THREE.CSS3DRenderer();
@@ -1635,21 +1513,16 @@
         cssContainer.appendChild(cssRenderer.domElement);
 
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.target.set(0, 0.5, 0);
-        controls.update();
-        controls.enablePan = false;
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 2;
-        controls.maxDistance = 25;
+        controls.target.set(0, 0.5, 0); controls.update();
+        controls.enablePan = false; controls.enableDamping = true; controls.dampingFactor = 0.05;
+        controls.minDistance = 2; controls.maxDistance = 25;
         controls.rotateSpeed = window.innerWidth < 768 ? 0.3 : 0.5;
 
         const loadingScreen = document.getElementById('loading-screen');
         const loadingProgress = document.getElementById('loading-progress');
         const dracoLoader = new THREE.DRACOLoader();
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
-        const loader = new THREE.GLTFLoader();
-        loader.setDRACOLoader(dracoLoader);
+        const loader = new THREE.GLTFLoader(); loader.setDRACOLoader(dracoLoader);
         let mixer;
         const clock = new THREE.Clock();
         let modelLoaded = false;
@@ -1668,21 +1541,16 @@
         let originalDirectionalIntensity = 1.5;
         let isDroneView = false;
 
-        function create3DText(htmlContent, vpKey, scale) {
+        function create3DText(html, vpKey, scale) {
             const vp = viewpoints[vpKey];
-            const div = document.createElement('div');
-            div.className = 'sign-3d';
-            div.innerHTML = htmlContent;
-            const object = new THREE.CSS3DObject(div);
-            object.position.copy(vp.target);
-            object.scale.set(scale, scale, scale);
-            object.lookAt(vp.camera);
-            scene.add(object);
-            return object;
+            const div = document.createElement('div'); div.className = 'sign-3d'; div.innerHTML = html;
+            const obj = new THREE.CSS3DObject(div);
+            obj.position.copy(vp.target); obj.scale.set(scale, scale, scale); obj.lookAt(vp.camera);
+            scene.add(obj); return obj;
         }
         const signs = {
             home: create3DText(`<h1>S M Najmul Alam</h1><p style="font-size:1.15rem;color:var(--accent-primary);font-weight:600;margin-bottom:5px;">Business Analyst & AI Engineer</p><p style="font-size:0.9rem;color:var(--text-secondary);">Core Banking • Intelligent Automation • ML Solutions</p>`, 'home', window.innerWidth < 768 ? 0.0035 : 0.005),
-            about: create3DText(`<h2>About Me</h2><p style="font-size:1rem;line-height:1.4;">Bridging banking and advanced tech. Oracle FlexCube 14.8 specialist & AI agent engineer.</p>`, 'about', window.innerWidth < 768 ? 0.0028 : 0.004),
+            about: create3DText(`<h2>About Me</h2><p style="font-size:1rem;line-height:1.4;">Bridging banking and advanced tech. Oracle FlexCube specialist & AI engineer.</p>`, 'about', window.innerWidth < 768 ? 0.0028 : 0.004),
             experience: create3DText(`<h2>Experience</h2><p style="font-size:1.05rem;line-height:1.4;"><strong>Business Analyst at Data Edge Ltd.</strong><br>Leading gap analysis for NRB Bank FlexCube 14.8.</p>`, 'experience', window.innerWidth < 768 ? 0.0028 : 0.004),
             projects: create3DText(`<h2>Selected Works</h2><ul style="font-size:0.95rem;text-align:left;padding-left:20px;margin-top:10px;"><li>FlexCube AI Platform</li><li>Machine Vision QA</li><li>Brain MRI Segmenter</li></ul>`, 'projects', window.innerWidth < 768 ? 0.0028 : 0.004),
             education: create3DText(`<h2>Education</h2><p style="font-size:1rem;line-height:1.4;"><strong>B.Sc. CSE • BRAC University</strong><br>CGPA: 3.86/4.00 • Merit Scholar</p>`, 'education', window.innerWidth < 768 ? 0.0028 : 0.004),
@@ -1691,119 +1559,84 @@
 
         loader.load('./models/LittlestTokyo.glb', function (gltf) {
             const model = gltf.scene;
-            model.position.set(1, 1, 0);
-            model.scale.set(0.01, 0.01, 0.01);
-            model.traverse(function (child) {
-                if (child.isMesh) {
-                    child.material.envMapIntensity = 1.0;
-                    if (child.material.emissive) child.material.emissiveIntensity = 0.2;
-                }
-            });
+            model.position.set(1, 1, 0); model.scale.set(0.01, 0.01, 0.01);
+            model.traverse(function (c) { if (c.isMesh) { c.material.envMapIntensity = 1.0; if (c.material.emissive) c.material.emissiveIntensity = 0.2; } });
             scene.add(model);
-            mixer = new THREE.AnimationMixer(model);
-            mixer.clipAction(gltf.animations[0]).play();
+            mixer = new THREE.AnimationMixer(model); mixer.clipAction(gltf.animations[0]).play();
             modelLoaded = true;
             loadingScreen.style.opacity = '0';
             setTimeout(() => { loadingScreen.style.display = 'none'; focusOnTarget('home'); }, 500);
-        }, function (xhr) {
-            if (xhr.lengthComputable) loadingProgress.style.width = (xhr.loaded / xhr.total * 100) + '%';
-        }, function (e) {
-            console.error(e);
-            loadingScreen.innerHTML = '<h2 style="color:white;">Error loading 3D model. Please refresh.</h2>';
-        });
+        }, function (xhr) { if (xhr.lengthComputable) loadingProgress.style.width = (xhr.loaded / xhr.total * 100) + '%'; },
+            function (e) { console.error(e); loadingScreen.innerHTML = '<h2 style="color:white;">Error loading model.</h2>'; });
 
-        // ==========================================
-        // Scroll Navigation (accumulator-based)
-        // ==========================================
+        // Scroll nav
         const sectionOrder = ['home', 'about', 'experience', 'projects', 'education', 'skills', 'goals'];
         let currentSectionIndex = 0;
         let isScrolling = false;
-
-        function navigateByScroll(direction) {
+        function navigateByScroll(dir) {
             if (isScrolling) return;
-            const newIndex = currentSectionIndex + direction;
-            if (newIndex < 0 || newIndex >= sectionOrder.length) return;
-            isScrolling = true;
-            currentSectionIndex = newIndex;
+            const ni = currentSectionIndex + dir;
+            if (ni < 0 || ni >= sectionOrder.length) return;
+            isScrolling = true; currentSectionIndex = ni;
             focusOnTarget(sectionOrder[currentSectionIndex]);
             setTimeout(() => { isScrolling = false; }, 1200);
         }
-
-        const originalFocusOnTarget = focusOnTarget;
-        focusOnTarget = function (sectionId) {
-            originalFocusOnTarget(sectionId);
-            const idx = sectionOrder.indexOf(sectionId);
+        const origFocus = focusOnTarget;
+        focusOnTarget = function (sid) {
+            origFocus(sid);
+            const idx = sectionOrder.indexOf(sid);
             if (idx !== -1) currentSectionIndex = idx;
-            // Close mobile nav if open
             document.getElementById('mobile-nav').classList.remove('visible');
             document.getElementById('hamburger').classList.remove('active');
         };
 
-        let wheelAccumulator = 0;
-        const wheelThreshold = 80;
-
+        let wheelAcc = 0;
         window.addEventListener('wheel', (e) => {
-            const visiblePanels = document.querySelectorAll('.side-panel.visible-panel');
-            let overPanel = false;
-            for (const panel of visiblePanels) {
-                const rect = panel.getBoundingClientRect();
-                if (e.clientX >= rect.left && e.clientX <= rect.right &&
-                    e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                    overPanel = true; break;
-                }
+            const vp = document.querySelectorAll('.side-panel.visible-panel');
+            let over = false;
+            for (const p of vp) {
+                const r = p.getBoundingClientRect();
+                if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) { over = true; break; }
             }
-            if (overPanel) return;
-
-            wheelAccumulator += e.deltaY;
-            if (Math.abs(wheelAccumulator) >= wheelThreshold) {
-                const dir = wheelAccumulator > 0 ? 1 : -1;
-                wheelAccumulator = 0;
-                navigateByScroll(dir);
-            }
+            if (over) return;
+            wheelAcc += e.deltaY;
+            if (Math.abs(wheelAcc) >= 80) { const d = wheelAcc > 0 ? 1 : -1; wheelAcc = 0; navigateByScroll(d); }
         }, { passive: true });
 
-        // Touch swipe with debounce
-        let touchStartY = 0;
-        let touchActive = false;
-        window.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-            touchActive = true;
-        }, { passive: true });
+        let touchStartY = 0, touchActive = false;
+        window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; touchActive = true; }, { passive: true });
         window.addEventListener('touchmove', (e) => {
-            // allow default scroll behavior inside panels
-            const visiblePanels = document.querySelectorAll('.side-panel.visible-panel');
-            let overPanel = false;
-            for (const panel of visiblePanels) {
-                const rect = panel.getBoundingClientRect();
-                if (e.touches[0].clientX >= rect.left && e.touches[0].clientX <= rect.right &&
-                    e.touches[0].clientY >= rect.top && e.touches[0].clientY <= rect.bottom) {
-                    overPanel = true; break;
-                }
-            }
-            if (overPanel) return;
-            e.preventDefault();
+            const vp = document.querySelectorAll('.side-panel.visible-panel');
+            let over = false;
+            for (const p of vp) { const r = p.getBoundingClientRect(); if (e.touches[0].clientX >= r.left && e.touches[0].clientX <= r.right && e.touches[0].clientY >= r.top && e.touches[0].clientY <= r.bottom) { over = true; break; } }
+            if (over) return; e.preventDefault();
         }, { passive: false });
         window.addEventListener('touchend', (e) => {
-            if (!touchActive) return;
-            touchActive = false;
-            const diff = touchStartY - e.changedTouches[0].clientY;
-            if (Math.abs(diff) > 50) navigateByScroll(diff > 0 ? 1 : -1);
+            if (!touchActive) return; touchActive = false;
+            const d = touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(d) > 50) navigateByScroll(d > 0 ? 1 : -1);
         }, { passive: true });
 
-        // Nav clicks (desktop + mobile overlay)
+        const sectionLabels = { home: 'Home', about: 'About', experience: 'Experience', projects: 'Projects', education: 'Education', skills: 'Skills', goals: 'Goals & Vision' };
+        const isMobile = window.innerWidth < 900;
         document.querySelectorAll('.nav-logo, .nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                focusOnTarget(e.target.getAttribute('data-target'));
+                const tid = e.target.getAttribute('data-target');
+                focusOnTarget(tid);
+                if (isMobile && tid !== 'home') {
+                    const old = document.getElementById('st'); if (old) old.remove();
+                    const t = document.createElement('div'); t.id = 'st'; t.textContent = sectionLabels[tid] || tid;
+                    Object.assign(t.style, { position: 'fixed', top: '80px', left: '50%', transform: 'translateX(-50%)', background: 'rgba(56,189,248,0.15)', border: '1px solid rgba(56,189,248,0.3)', backdropFilter: 'blur(10px)', color: '#38bdf8', padding: '8px 20px', borderRadius: '20px', fontFamily: 'Outfit,sans-serif', fontSize: '0.85rem', fontWeight: '600', zIndex: '200', opacity: '0', transition: 'opacity 0.3s ease' });
+                    document.body.appendChild(t);
+                    requestAnimationFrame(() => t.style.opacity = '1');
+                    setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 1500);
+                }
             });
         });
 
-        // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('visible');
-        });
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileNav.classList.toggle('visible'); });
 
         function updateNavState(id) {
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -1811,197 +1644,153 @@
             if (nl) nl.classList.add('active');
         }
 
-        // ==========================================
-        // focusOnTarget
-        // ==========================================
+        // Camera flight state
+        let flyTime = 0, isFlying = false, flyDuration = 1.8;
+        let startCam = { x: 5, y: 2, z: 8 }, endCam = { x: 5, y: 2, z: 8 };
+        let startTarget = { x: 0, y: 0.5, z: 0 }, endTarget = { x: 0, y: 0.5, z: 0 };
+
         function focusOnTarget(sectionId) {
             updateNavState(sectionId);
             const vp = viewpoints[sectionId];
             if (!vp) return;
 
-            Object.keys(signs).forEach(key => {
-                if (key === sectionId) signs[key].element.classList.add('visible-sign');
-                else signs[key].element.classList.remove('visible-sign');
-            });
-
-            if (sectionId === 'goals') {
-                isDroneView = true;
-                ambientLight.intensity = 0.02;
-                directionalLight.intensity = 0.3;
-                controls.autoRotate = false;
-                controls.enableRotate = false;
-                startGoalsTyping();
+            // On mobile, hide panels
+            if (window.innerWidth < 900) {
+                document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('visible-panel'));
             } else {
-                isDroneView = false;
-                ambientLight.intensity = originalAmbientIntensity;
-                directionalLight.intensity = originalDirectionalIntensity;
-                controls.enableRotate = true;
-                controls.autoRotate = false;
-            }
-
-            const activePanel = document.querySelector(`.side-panel[data-panel="${sectionId}"]`);
-            if (activePanel) {
-                const staggerItems = activePanel.querySelectorAll('.hud-stagger > *');
-                staggerItems.forEach((item, index) => {
-                    item.classList.remove('revealed');
-                    setTimeout(() => item.classList.add('revealed'), 300 + index * 100);
+                Object.keys(signs).forEach(key => {
+                    if (key === sectionId) signs[key].element.classList.add('visible-sign');
+                    else signs[key].element.classList.remove('visible-sign');
+                });
+                const ap = document.querySelector(`.side-panel[data-panel="${sectionId}"]`);
+                if (ap) {
+                    ap.querySelectorAll('.hud-stagger > *').forEach((item, i) => {
+                        item.classList.remove('revealed');
+                        setTimeout(() => item.classList.add('revealed'), 300 + i * 100);
+                    });
+                }
+                document.querySelectorAll('.side-panel').forEach(p => {
+                    if (p.getAttribute('data-panel') === sectionId) p.classList.add('visible-panel');
+                    else p.classList.remove('visible-panel');
                 });
             }
 
-            document.querySelectorAll('.side-panel').forEach(panel => {
-                if (panel.getAttribute('data-panel') === sectionId) panel.classList.add('visible-panel');
-                else panel.classList.remove('visible-panel');
-            });
+            if (sectionId === 'goals') {
+                isDroneView = true;
+                ambientLight.intensity = 0.02; directionalLight.intensity = 0.3;
+                controls.enabled = false;
+                if (window.innerWidth >= 900) startGoalsTyping();
+            } else {
+                isDroneView = false;
+                ambientLight.intensity = originalAmbientIntensity; directionalLight.intensity = originalDirectionalIntensity;
+                controls.enabled = true;
+            }
 
-            flyTime = 0;
-            isFlying = true;
+            // Start smooth flight — disable controls during transition
+            controls.enabled = false;
+            flyTime = 0; isFlying = true;
+            flyDuration = sectionId === 'goals' ? 3.0 : 1.8;
             startCam = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
             startTarget = { x: controls.target.x, y: controls.target.y, z: controls.target.z };
             endCam = { x: vp.camera.x, y: vp.camera.y, z: vp.camera.z };
             endTarget = { x: vp.target.x, y: vp.target.y, z: vp.target.z };
         }
 
-        // Camera flight with lerp
-        let flyTime = 0;
-        let isFlying = false;
-        let startCam = { x: 5, y: 2, z: 8 };
-        let startTarget = { x: 0, y: 0.5, z: 0 };
-        let endCam = { x: 5, y: 2, z: 8 };
-        let endTarget = { x: 0, y: 0.5, z: 0 };
-
-        // ==========================================
-        // Goals Typewriter
-        // ==========================================
+        // Goals typewriter
         let goalsTypingStarted = false;
-
         function startGoalsTyping() {
-            if (goalsTypingStarted) return;
-            goalsTypingStarted = true;
-
-            const el = document.getElementById('goals-text');
-            el.innerHTML = '';
-
+            if (goalsTypingStarted) return; goalsTypingStarted = true;
+            const el = document.getElementById('goals-text'); el.innerHTML = '';
             const lines = [
-                { prefix: '>> ', text: 'LIFE GOAL', color: 'rgba(56,189,248,0.5)', delay: 500 },
-                { prefix: '', text: 'To bridge the gap between cutting-edge AI', color: '#f8fafc', delay: 1500 },
-                { prefix: '', text: 'and real-world banking making financial', color: '#f8fafc', delay: 2200 },
-                { prefix: '', text: 'systems smarter, more inclusive, and', color: '#f8fafc', delay: 2900 },
-                { prefix: '', text: 'radically more efficient for everyone.', color: '#f8fafc', delay: 3600 },
-                { prefix: '', text: '', color: '#f8fafc', delay: 4100 },
-                { prefix: '>> ', text: 'PROFESSIONAL GOAL', color: 'rgba(56,189,248,0.5)', delay: 4300 },
-                { prefix: '', text: 'To lead the next generation of autonomous', color: '#f8fafc', delay: 5300 },
-                { prefix: '', text: 'AI agents in core banking architecting', color: '#f8fafc', delay: 6000 },
-                { prefix: '', text: 'systems that learn, adapt, and optimize', color: '#f8fafc', delay: 6700 },
-                { prefix: '', text: 'business workflows at scale.', color: '#f8fafc', delay: 7400 },
-                { prefix: '', text: '', color: '#f8fafc', delay: 7900 },
-                { prefix: '>> ', text: 'MISSION', color: 'rgba(56,189,248,0.5)', delay: 8100 },
-                { prefix: '', text: '"Build. Deploy. Transform."', color: '#38bdf8', delay: 9100 }
+                { p: '>> ', t: 'LIFE GOAL', c: 'rgba(56,189,248,0.5)', d: 500 },
+                { p: '', t: 'To bridge the gap between cutting-edge AI', c: '#f8fafc', d: 1500 },
+                { p: '', t: 'and real-world banking — making financial', c: '#f8fafc', d: 2200 },
+                { p: '', t: 'systems smarter, more inclusive, and', c: '#f8fafc', d: 2900 },
+                { p: '', t: 'radically more efficient for everyone.', c: '#f8fafc', d: 3600 },
+                { p: '', t: '', c: '#f8fafc', d: 4100 },
+                { p: '>> ', t: 'PROFESSIONAL GOAL', c: 'rgba(56,189,248,0.5)', d: 4300 },
+                { p: '', t: 'To lead autonomous AI agents in banking', c: '#f8fafc', d: 5300 },
+                { p: '', t: 'that learn, adapt, and optimize', c: '#f8fafc', d: 6000 },
+                { p: '', t: 'business workflows at unprecedented scale.', c: '#f8fafc', d: 6700 },
+                { p: '', t: '', c: '#f8fafc', d: 7200 },
+                { p: '>> ', t: 'MISSION', c: 'rgba(56,189,248,0.5)', d: 7400 },
+                { p: '', t: '"Build. Deploy. Transform."', c: '#38bdf8', d: 8400 }
             ];
-
-            let lineIndex = 0;
-
-            function typeNextChar() {
-                if (lineIndex >= lines.length) return;
-                const lineData = lines[lineIndex];
-                const span = document.createElement('span');
-                span.className = 'goal-line';
-                span.style.color = lineData.color;
-                span.textContent = lineData.prefix + lineData.text.charAt(0) + '█';
-                el.appendChild(span);
-                el.scrollTop = el.scrollHeight;
-
-                let c = 0;
-                const fullText = lineData.prefix + lineData.text;
-
-                function typeChar() {
-                    if (c >= fullText.length) {
-                        span.textContent = fullText;
-                        span.classList.add('visible');
-                        lineIndex++;
-                        setTimeout(typeNextChar, lineData.delay || 1200);
-                        return;
-                    }
-                    span.textContent = fullText.substring(0, c + 1) + '█';
-                    c++;
-                    setTimeout(typeChar, 30 + Math.random() * 20);
+            let li = 0;
+            function nextLine() {
+                if (li >= lines.length) return;
+                const ld = lines[li];
+                const span = document.createElement('span'); span.className = 'goal-line'; span.style.color = ld.c;
+                span.textContent = ld.p + ld.t.charAt(0) + '█'; el.appendChild(span); el.scrollTop = el.scrollHeight;
+                let c = 0; const full = ld.p + ld.t;
+                function type() {
+                    if (c >= full.length) { span.textContent = full; span.classList.add('visible'); li++; setTimeout(nextLine, ld.d || 1200); return; }
+                    span.textContent = full.substring(0, c + 1) + '█'; c++; setTimeout(type, 30 + Math.random() * 20);
                 }
-                setTimeout(typeChar, 300);
+                setTimeout(type, 300);
             }
-            typeNextChar();
+            nextLine();
         }
 
-        // ==========================================
-        // Resize
-        // ==========================================
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            cssRenderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight); cssRenderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // ==========================================
-        // Animation Loop
-        // ==========================================
         function animate() {
             requestAnimationFrame(animate);
             controls.update();
             const delta = clock.getDelta();
             if (mixer) mixer.update(delta);
 
-            // Camera flight lerp
+            // Smooth camera flight
             if (isFlying) {
                 flyTime += delta;
-                const t = Math.min(flyTime / 2.0, 1);
-                const ease = t * t * (3 - 2 * t);
+                const t = Math.min(flyTime / flyDuration, 1);
+                const ease = t * t * (3 - 2 * t); // smoothstep
                 camera.position.x = startCam.x + (endCam.x - startCam.x) * ease;
                 camera.position.y = startCam.y + (endCam.y - startCam.y) * ease;
                 camera.position.z = startCam.z + (endCam.z - startCam.z) * ease;
                 controls.target.x = startTarget.x + (endTarget.x - startTarget.x) * ease;
                 controls.target.y = startTarget.y + (endTarget.y - startTarget.y) * ease;
                 controls.target.z = startTarget.z + (endTarget.z - startTarget.z) * ease;
-                if (t >= 1) isFlying = false;
+                if (t >= 1) {
+                    isFlying = false;
+                    if (!isDroneView) controls.enabled = true;
+                    controls.update();
+                }
             }
 
             // Drone orbit
-            if (isDroneView && modelLoaded) {
+            if (isDroneView && modelLoaded && !isFlying) {
                 const radius = window.innerWidth < 768 ? 10 : 14;
                 const height = (window.innerWidth < 768 ? 6 : 8) + Math.sin(clock.elapsedTime * 0.15) * 1.5;
                 const angle = clock.elapsedTime * 0.12;
-                if (!isFlying) {
-                    camera.position.x = Math.sin(angle) * radius;
-                    camera.position.z = Math.cos(angle) * radius;
-                    camera.position.y = height;
-                    controls.target.set(0, 0, 0);
-                }
+                camera.position.x = Math.sin(angle) * radius;
+                camera.position.z = Math.cos(angle) * radius;
+                camera.position.y = height;
+                controls.target.set(0, 0, 0);
             }
 
             if (skySphere) skySphere.rotation.y += 0.00004;
             if (starField) {
                 starField.rotation.y += 0.00008;
                 if (starGeometry && starBaseColors.length > 0) {
-                    const colorsAttr = starGeometry.attributes.color.array;
-                    const sizesAttr = starGeometry.attributes.size.array;
+                    const ca = starGeometry.attributes.color.array;
+                    const sa = starGeometry.attributes.size.array;
                     const time = clock.getElapsedTime();
                     raycaster.setFromCamera(mouseNDC, camera);
-                    const mouseRay = raycaster.ray;
+                    const mr = raycaster.ray;
                     for (let i = 0; i < starCount; i++) {
-                        const speed = starTwinkleSpeeds[i];
-                        const phase = starTwinklePhases[i];
-                        const twinkle = 0.15 + 0.85 * Math.pow(Math.abs(Math.sin(time * speed + phase)), 2.0);
-                        const baseCol = starBaseColors[i];
-                        const sx = starPositions[i * 3], sy = starPositions[i * 3 + 1], sz = starPositions[i * 3 + 2];
-                        const starPos = new THREE.Vector3(sx, sy, sz);
-                        const distToRay = mouseRay.distanceToPoint(starPos);
-                        const proxGlow = Math.max(0, 1.0 - distToRay / 5.0);
-                        const brightMult = twinkle + proxGlow * 1.2;
-                        colorsAttr[i * 3] = Math.min(1, baseCol.r * brightMult);
-                        colorsAttr[i * 3 + 1] = Math.min(1, baseCol.g * brightMult);
-                        colorsAttr[i * 3 + 2] = Math.min(1, baseCol.b * brightMult);
-                        sizesAttr[i] = starBaseSizes[i] * (1 + proxGlow * 2.5);
+                        const tw = 0.15 + 0.85 * Math.pow(Math.abs(Math.sin(time * starTwinkleSpeeds[i] + starTwinklePhases[i])), 2);
+                        const bc = starBaseColors[i];
+                        const sp = new THREE.Vector3(starPositions[i * 3], starPositions[i * 3 + 1], starPositions[i * 3 + 2]);
+                        const pg = Math.max(0, 1.0 - mr.distanceToPoint(sp) / 5.0);
+                        const bm = tw + pg * 1.2;
+                        ca[i * 3] = Math.min(1, bc.r * bm); ca[i * 3 + 1] = Math.min(1, bc.g * bm); ca[i * 3 + 2] = Math.min(1, bc.b * bm);
+                        sa[i] = starBaseSizes[i] * (1 + pg * 2.5);
                     }
-                    starGeometry.attributes.color.needsUpdate = true;
-                    starGeometry.attributes.size.needsUpdate = true;
+                    starGeometry.attributes.color.needsUpdate = true; starGeometry.attributes.size.needsUpdate = true;
                 }
             }
             if (nebulae) { nebulae.rotation.y -= 0.00005; nebulae.rotation.x += 0.00003; }
@@ -2011,73 +1800,44 @@
         }
         animate();
 
-        // ==========================================
-        // Cursor Trail
-        // ==========================================
-        const cursorCanvas = document.createElement('canvas');
-        cursorCanvas.id = 'magic-cursor-canvas';
+        // Cursor trail
+        const cursorCanvas = document.createElement('canvas'); cursorCanvas.id = 'magic-cursor-canvas';
         Object.assign(cursorCanvas.style, { position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh', pointerEvents: 'none', zIndex: '99999' });
         document.body.appendChild(cursorCanvas);
         const ctx = cursorCanvas.getContext('2d');
-        let w = cursorCanvas.width = window.innerWidth;
-        let h = cursorCanvas.height = window.innerHeight;
+        let w = cursorCanvas.width = window.innerWidth, h = cursorCanvas.height = window.innerHeight;
         window.addEventListener('resize', () => { w = cursorCanvas.width = window.innerWidth; h = cursorCanvas.height = window.innerHeight; });
         const particles = [];
         const mouse = { x: null, y: null, prevX: null, prevY: null };
 
         class PlasmaParticle {
             constructor(x, y, vx, vy) {
-                this.x = x; this.y = y;
-                this.size = Math.random() * 1.5 + 0.3;
-                this.speedX = vx * 0.15 + (Math.random() - 0.5) * 0.4;
-                this.speedY = vy * 0.15 + (Math.random() - 0.5) * 0.4;
+                this.x = x; this.y = y; this.size = Math.random() * 1.5 + 0.3;
+                this.speedX = vx * 0.15 + (Math.random() - 0.5) * 0.4; this.speedY = vy * 0.15 + (Math.random() - 0.5) * 0.4;
                 const colors = [[140, 220, 255], [56, 189, 248], [220, 240, 255], [170, 180, 255], [255, 255, 255]];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.opacity = 0.6 + Math.random() * 0.4;
-                this.decay = 0.008 + Math.random() * 0.012;
-                this.life = 1.0;
+                this.opacity = 0.6 + Math.random() * 0.4; this.decay = 0.008 + Math.random() * 0.012; this.life = 1.0;
             }
-            update() {
-                this.x += this.speedX; this.y += this.speedY;
-                this.speedX *= 0.97; this.speedY *= 0.97;
-                this.life -= this.decay; this.opacity = this.life * 0.8;
-            }
+            update() { this.x += this.speedX; this.y += this.speedY; this.speedX *= 0.97; this.speedY *= 0.97; this.life -= this.decay; this.opacity = this.life * 0.8; }
             draw(ctx) {
                 if (this.life <= 0) return;
-                const [r, g, b] = this.color;
-                const gs = this.size * 3;
+                const [r, g, b] = this.color; const gs = this.size * 3;
                 const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, gs);
-                grad.addColorStop(0, `rgba(${r},${g},${b},${this.opacity * 0.5})`);
-                grad.addColorStop(0.4, `rgba(${r},${g},${b},${this.opacity * 0.15})`);
-                grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
-                ctx.fillStyle = grad;
-                ctx.beginPath(); ctx.arc(this.x, this.y, gs, 0, Math.PI * 2); ctx.fill();
-                ctx.fillStyle = `rgba(${r},${g},${b},${this.opacity})`;
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2); ctx.fill();
+                grad.addColorStop(0, `rgba(${r},${g},${b},${this.opacity * 0.5})`); grad.addColorStop(0.4, `rgba(${r},${g},${b},${this.opacity * 0.15})`); grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+                ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(this.x, this.y, gs, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = `rgba(${r},${g},${b},${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2); ctx.fill();
             }
         }
-
         window.addEventListener('mousemove', (e) => {
-            mouse.prevX = mouse.x; mouse.prevY = mouse.y;
-            mouse.x = e.clientX; mouse.y = e.clientY;
-            mouseNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
-            const vx = mouse.prevX !== null ? mouse.x - mouse.prevX : 0;
-            const vy = mouse.prevY !== null ? mouse.y - mouse.prevY : 0;
-            const speed = Math.sqrt(vx * vx + vy * vy);
-            const count = Math.min(Math.floor(speed * 0.15) + 1, 3);
-            for (let i = 0; i < count; i++) {
-                particles.push(new PlasmaParticle(mouse.x + (Math.random() - 0.5) * 4, mouse.y + (Math.random() - 0.5) * 4, vx, vy));
-            }
+            mouse.prevX = mouse.x; mouse.prevY = mouse.y; mouse.x = e.clientX; mouse.y = e.clientY;
+            mouseNDC.x = (e.clientX / window.innerWidth) * 2 - 1; mouseNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            const vx = mouse.prevX !== null ? mouse.x - mouse.prevX : 0, vy = mouse.prevY !== null ? mouse.y - mouse.prevY : 0;
+            const spd = Math.sqrt(vx * vx + vy * vy); const cnt = Math.min(Math.floor(spd * 0.15) + 1, 3);
+            for (let i = 0; i < cnt; i++) particles.push(new PlasmaParticle(mouse.x + (Math.random() - 0.5) * 4, mouse.y + (Math.random() - 0.5) * 4, vx, vy));
         });
-
         function animateCursorTrail() {
             ctx.clearRect(0, 0, w, h);
-            for (let i = particles.length - 1; i >= 0; i--) {
-                const p = particles[i];
-                p.update(); p.draw(ctx);
-                if (p.life <= 0) particles.splice(i, 1);
-            }
+            for (let i = particles.length - 1; i >= 0; i--) { const p = particles[i]; p.update(); p.draw(ctx); if (p.life <= 0) particles.splice(i, 1); }
             requestAnimationFrame(animateCursorTrail);
         }
         animateCursorTrail();
