@@ -139,7 +139,6 @@
             height: 100vh;
             z-index: 1;
             pointer-events: none;
-            /* Let clicks pass to canvas */
         }
 
         .sign-3d {
@@ -431,13 +430,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(56, 189, 248, 0.03) 2px,
-                rgba(56, 189, 248, 0.03) 4px
-            );
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(56, 189, 248, 0.03) 2px,
+                    rgba(56, 189, 248, 0.03) 4px);
             pointer-events: none;
             z-index: 1;
             animation: scanlineDrift 8s linear infinite;
@@ -474,8 +471,7 @@
             margin-bottom: 8px;
             position: relative;
             z-index: 2;
-            /* Glitch effect via animation */
-            animation: none; /* Activated via JS */
+            animation: none;
         }
 
         .hero-name.glitch-active {
@@ -495,7 +491,7 @@
             white-space: nowrap;
             border-right: 2px solid var(--accent-primary);
             width: 0;
-            animation: none; /* Activated via JS */
+            animation: none;
         }
 
         .hero-title-line.typing {
@@ -533,7 +529,6 @@
             opacity: 1;
         }
 
-        /* Holographic flicker */
         .hero-card.holo-flicker {
             animation: holoFlicker 4s ease-in-out infinite;
         }
@@ -561,7 +556,6 @@
             overflow-x: hidden;
         }
 
-        /* Scanline overlay */
         .side-panel::before {
             content: '';
             position: absolute;
@@ -569,20 +563,17 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(56, 189, 248, 0.02) 2px,
-                rgba(56, 189, 248, 0.02) 4px
-            );
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(56, 189, 248, 0.02) 2px,
+                    rgba(56, 189, 248, 0.02) 4px);
             pointer-events: none;
             z-index: 0;
             animation: scanlineDrift 10s linear infinite;
             border-radius: 4px;
         }
 
-        /* Animated border trace on appear */
         .side-panel::after {
             content: '';
             position: absolute;
@@ -614,7 +605,6 @@
             pointer-events: auto;
         }
 
-        /* HUD corner brackets */
         .hud-corner {
             position: absolute;
             width: 16px;
@@ -631,30 +621,88 @@
             box-shadow: 0 0 6px var(--accent-primary);
         }
 
-        .hud-corner.top-left { top: 6px; left: 6px; }
-        .hud-corner.top-left::before { width: 16px; height: 1px; top: 0; left: 0; }
-        .hud-corner.top-left::after { width: 1px; height: 16px; top: 0; left: 0; }
+        .hud-corner.top-left {
+            top: 6px;
+            left: 6px;
+        }
 
-        .hud-corner.top-right { top: 6px; right: 6px; }
-        .hud-corner.top-right::before { width: 16px; height: 1px; top: 0; right: 0; }
-        .hud-corner.top-right::after { width: 1px; height: 16px; top: 0; right: 0; }
+        .hud-corner.top-left::before {
+            width: 16px;
+            height: 1px;
+            top: 0;
+            left: 0;
+        }
 
-        .hud-corner.bottom-left { bottom: 6px; left: 6px; }
-        .hud-corner.bottom-left::before { width: 16px; height: 1px; bottom: 0; left: 0; }
-        .hud-corner.bottom-left::after { width: 1px; height: 16px; bottom: 0; left: 0; }
+        .hud-corner.top-left::after {
+            width: 1px;
+            height: 16px;
+            top: 0;
+            left: 0;
+        }
 
-        .hud-corner.bottom-right { bottom: 6px; right: 6px; }
-        .hud-corner.bottom-right::before { width: 16px; height: 1px; bottom: 0; right: 0; }
-        .hud-corner.bottom-right::after { width: 1px; height: 16px; bottom: 0; right: 0; }
+        .hud-corner.top-right {
+            top: 6px;
+            right: 6px;
+        }
 
-        /* HUD panel content wrapper */
+        .hud-corner.top-right::before {
+            width: 16px;
+            height: 1px;
+            top: 0;
+            right: 0;
+        }
+
+        .hud-corner.top-right::after {
+            width: 1px;
+            height: 16px;
+            top: 0;
+            right: 0;
+        }
+
+        .hud-corner.bottom-left {
+            bottom: 6px;
+            left: 6px;
+        }
+
+        .hud-corner.bottom-left::before {
+            width: 16px;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+        }
+
+        .hud-corner.bottom-left::after {
+            width: 1px;
+            height: 16px;
+            bottom: 0;
+            left: 0;
+        }
+
+        .hud-corner.bottom-right {
+            bottom: 6px;
+            right: 6px;
+        }
+
+        .hud-corner.bottom-right::before {
+            width: 16px;
+            height: 1px;
+            bottom: 0;
+            right: 0;
+        }
+
+        .hud-corner.bottom-right::after {
+            width: 1px;
+            height: 16px;
+            bottom: 0;
+            right: 0;
+        }
+
         .hud-content {
             position: relative;
             z-index: 2;
             padding: 28px 28px 24px;
         }
 
-        /* HUD section header */
         .hud-header {
             display: flex;
             align-items: baseline;
@@ -699,19 +747,17 @@
             text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
-        /* Staggered reveal for children */
-        .hud-stagger > * {
+        .hud-stagger>* {
             opacity: 0;
             transform: translateY(12px);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        .hud-stagger > *.revealed {
+        .hud-stagger>*.revealed {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Skill bars */
         .skill-bar-container {
             margin-top: 8px;
             margin-bottom: 4px;
@@ -735,11 +781,6 @@
             transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .skill-bar-fill.animate {
-            /* Width set via JS inline style */
-        }
-
-        /* Override old side-panel styles for new HUD */
         .side-panel h3 {
             font-family: var(--font-display);
             color: var(--text-primary);
@@ -843,51 +884,143 @@
         }
 
         /* ==========================================
+           GOALS PANEL — TYPEWRITER TEXT
+           ========================================== */
+        .goals-typewriter {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            line-height: 1.8;
+            min-height: 200px;
+            white-space: pre-wrap;
+        }
+
+        .goals-typewriter .cursor-blink {
+            animation: blinkCursor 0.6s step-end infinite;
+        }
+
+        .goals-typewriter .goal-line {
+            display: block;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .goals-typewriter .goal-line.visible {
+            opacity: 1;
+        }
+
+        /* ==========================================
            KEYFRAME ANIMATIONS
            ========================================== */
         @keyframes glitchText {
-            0% { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translate(0); }
-            20% { text-shadow: -3px 0 #ff0040, 3px 0 #00ffff; transform: translate(-2px, 1px); }
-            40% { text-shadow: 3px 0 #ff0040, -3px 0 #00ffff; transform: translate(2px, -1px); }
-            60% { text-shadow: -1px 0 #ff0040, 1px 0 #00ffff; transform: translate(1px, 0); }
-            80% { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translate(-1px, 1px); }
-            100% { text-shadow: 0 0 transparent; transform: translate(0); }
+            0% {
+                text-shadow: 2px 0 #ff0040, -2px 0 #00ffff;
+                transform: translate(0);
+            }
+
+            20% {
+                text-shadow: -3px 0 #ff0040, 3px 0 #00ffff;
+                transform: translate(-2px, 1px);
+            }
+
+            40% {
+                text-shadow: 3px 0 #ff0040, -3px 0 #00ffff;
+                transform: translate(2px, -1px);
+            }
+
+            60% {
+                text-shadow: -1px 0 #ff0040, 1px 0 #00ffff;
+                transform: translate(1px, 0);
+            }
+
+            80% {
+                text-shadow: 2px 0 #ff0040, -2px 0 #00ffff;
+                transform: translate(-1px, 1px);
+            }
+
+            100% {
+                text-shadow: 0 0 transparent;
+                transform: translate(0);
+            }
         }
 
         @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         @keyframes blinkCursor {
-            50% { border-color: transparent; }
+            50% {
+                border-color: transparent;
+            }
         }
 
         @keyframes scanlineDrift {
-            from { transform: translateY(0); }
-            to { transform: translateY(20px); }
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(20px);
+            }
         }
 
         @keyframes borderPulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         @keyframes holoFlicker {
-            0%, 95%, 100% { opacity: 1; }
-            96% { opacity: 0.85; }
-            97% { opacity: 1; }
-            98% { opacity: 0.9; }
+
+            0%,
+            95%,
+            100% {
+                opacity: 1;
+            }
+
+            96% {
+                opacity: 0.85;
+            }
+
+            97% {
+                opacity: 1;
+            }
+
+            98% {
+                opacity: 0.9;
+            }
         }
 
         @keyframes borderSweep {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
         }
 
         @keyframes scanBarSweep {
-            from { left: -100%; }
-            to { left: 100%; }
+            from {
+                left: -100%;
+            }
+
+            to {
+                left: 100%;
+            }
         }
     </style>
 </head>
@@ -921,13 +1054,14 @@
     <div id="ui-layer">
         <nav>
             <div class="nav-container">
-                <div class="nav-logo" data-target="home">SMNA.</div>
+                <div class="nav-logo" data-target="home">S M Najmul Alam</div>
                 <div class="nav-links">
                     <div class="nav-link" data-target="about">About</div>
                     <div class="nav-link" data-target="experience">Experience</div>
                     <div class="nav-link" data-target="projects">Projects</div>
                     <div class="nav-link" data-target="education">Education</div>
                     <div class="nav-link" data-target="skills">Skills</div>
+                    <div class="nav-link" data-target="goals">Goals</div>
                 </div>
             </div>
         </nav>
@@ -943,9 +1077,9 @@
                     <h3>Professional Summary</h3>
                 </div>
                 <div class="hud-stagger">
-                    <p>I am a dynamic <strong>Business Analyst &amp; AI Engineer</strong> with hands-on experience in Oracle
-                        FlexCube 14.8 core banking implementations. Currently, I am contributing to the NRB Bank FlexCube
-                        upgradation project.</p>
+                    <p>I am a dynamic <strong>Business Analyst & AI Engineer</strong> with hands-on experience in Oracle
+                        FlexCube 14.8 core banking implementations. Currently, I am contributing to the NRB Bank
+                        FlexCube upgradation project.</p>
                     <p class="secondary">I combine a deep understanding of core banking systems with a strong technical
                         foundation in AI/ML, data analysis, and full-stack development, with a proven track record of
                         engineering autonomous AI agents to optimize complex business workflows.</p>
@@ -954,7 +1088,8 @@
                         <span>📞 +880 1704-461723</span>
                         <span>📍 Dhaka, Bangladesh</span>
                         <span>🔗 <a href="https://github.com/Najmul193" target="_blank">github.com/Najmul193</a></span>
-                        <span>🔗 <a href="https://linkedin.com/in/s-m-najmul-alam" target="_blank">linkedin.com/in/s-m-najmul-alam</a></span>
+                        <span>🔗 <a href="https://linkedin.com/in/s-m-najmul-alam"
+                                target="_blank">linkedin.com/in/s-m-najmul-alam</a></span>
                     </div>
                 </div>
             </div>
@@ -975,35 +1110,36 @@
                         <h4>Business Analyst</h4>
                         <div class="company">Data Edge Ltd. | Mar 2026 - Present</div>
                         <ul>
-                            <li><strong>Oracle FlexCube 14.8:</strong> Driving requirement gap analysis for NRB Bank, mapping
-                                banking workflows against FlexCube functional capabilities across Core, Credit, and Treasury
-                                domains.</li>
-                            <li><strong>Parameterisation &amp; UAT:</strong> Supporting parameterisation with Oracle teams and
-                                facilitating structured UAT sessions to validate system behavior.</li>
-                            <li><strong>AI Automation:</strong> Engineered an AI-powered requirement synchronisation agent
-                                automating cross-referencing of bank assessment data against FlexCube documentation.</li>
+                            <li><strong>Oracle FlexCube 14.8:</strong> Driving requirement gap analysis for NRB Bank,
+                                mapping banking workflows against FlexCube functional capabilities across Core, Credit,
+                                and Treasury domains.</li>
+                            <li><strong>Parameterisation & UAT:</strong> Supporting parameterisation with Oracle teams
+                                and facilitating structured UAT sessions to validate system behavior.</li>
+                            <li><strong>AI Automation:</strong> Engineered an AI-powered requirement synchronisation
+                                agent automating cross-referencing of bank assessment data against FlexCube
+                                documentation.</li>
                             <li><strong>Data Analysis:</strong> Analyzing gap datasets to surface insights and support
                                 evidence-based implementation decisions.</li>
-                            <li><strong>Flexy Platform:</strong> Building an AI-Powered Learning Platform replacing static
-                                documents with interactive Q&amp;A, PDF-to-LLM sync, and adaptive quizzes.</li>
+                            <li><strong>Flexy Platform:</strong> Building an AI-Powered Learning Platform replacing
+                                static documents with interactive Q&A, PDF-to-LLM sync, and adaptive quizzes.</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <h4>Website Maintenance Executive</h4>
                         <div class="company">NexonicBD | Jun 2025 - Jan 2026</div>
                         <ul>
-                            <li>Maintained and optimized the company e-commerce platform to ensure high uptime, stability, and
-                                seamless order processing.</li>
-                            <li>Collaborated with cross-functional teams to resolve technical bugs and improve responsive UI
-                                layout.</li>
+                            <li>Maintained and optimized the company e-commerce platform to ensure high uptime,
+                                stability, and seamless order processing.</li>
+                            <li>Collaborated with cross-functional teams to resolve technical bugs and improve
+                                responsive UI layout.</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <h4>Student Tutor</h4>
                         <div class="company">BRAC University | 2024 - 2025</div>
                         <ul>
-                            <li>Conducted interactive tutoring sessions in Linear Algebra and Fourier Analysis, helping students
-                                master complex mathematical modeling and analytical skills.</li>
+                            <li>Conducted interactive tutoring sessions in Linear Algebra and Fourier Analysis, helping
+                                students master complex mathematical modeling and analytical skills.</li>
                         </ul>
                     </div>
                 </div>
@@ -1024,30 +1160,27 @@
                     <div class="project-item">
                         <h4>Oracle FlexCube AI Learning Platform (Flexy)</h4>
                         <div class="tech">Next.js 15, TypeScript, Google Gemini, Node.js</div>
-                        <p>Architected a full-stack AI learning platform for FlexCube 14.8, featuring bi-directional PDF-to-LLM
-                            synchronization, fault-tolerant API orchestration with circuit-breaker key rotation, and a
-                            non-deterministic adaptive quiz engine. Built ETL pipelines converting raw Excel datasets to JSON.
-                        </p>
+                        <p>Architected a full-stack AI learning platform for FlexCube 14.8, featuring bi-directional
+                            PDF-to-LLM synchronization, fault-tolerant API orchestration with circuit-breaker key
+                            rotation, and a non-deterministic adaptive quiz engine.</p>
                     </div>
                     <div class="project-item">
                         <h4>Machine Vision Quality Assurance System</h4>
                         <div class="tech">Python, TensorFlow, EfficientNet-B0, Jetson Nano, STM32</div>
-                        <p>Led the machine learning pipeline (data collection, augmentation, and CNN training via transfer
-                            learning) for defect classification. Deployed models on Jetson Nano, integrating with STM32 via
-                            UART/CAN to enable real-time defect sorting at sub-400ms latency.</p>
+                        <p>Led the ML pipeline for defect classification. Deployed models on Jetson Nano, integrating
+                            with STM32 via UART/CAN for sub-400ms real-time sorting.</p>
                     </div>
                     <div class="project-item">
                         <h4>Destination Diary</h4>
                         <div class="tech">MERN Stack, AI Integration, TailwindCSS</div>
-                        <p>Built a full-stack web application with a responsive UI and an AI-driven recommendation engine that
-                            analyzes user preferences and reviews to recommend personalized travel itineraries.</p>
+                        <p>Built a full-stack web app with an AI-driven recommendation engine for personalized travel
+                            itineraries.</p>
                     </div>
                     <div class="project-item">
                         <h4>LGG Brain MRI Segmentation</h4>
                         <div class="tech">Python, CNN, Deep Learning (PyTorch/Keras)</div>
-                        <p>Implemented an advanced CNN architecture (U-Net based) for automated brain tumor segmentation using
-                            the TCGA-LGG dataset. Evaluated model accuracy and performance using the Dice coefficient and
-                            cross-entropy loss.</p>
+                        <p>Implemented U-Net based CNN for automated brain tumor segmentation using the TCGA-LGG
+                            dataset.</p>
                     </div>
                 </div>
             </div>
@@ -1065,13 +1198,13 @@
                 </div>
                 <div class="hud-stagger">
                     <div class="timeline-item">
-                        <h4>B.Sc. in Computer Science &amp; Engineering</h4>
+                        <h4>B.Sc. in Computer Science & Engineering</h4>
                         <div class="company">BRAC University | 2021 - 2026</div>
                         <div class="highlight">CGPA: 3.86/4.00 | Merit-Based Scholarship (2022 - 2026)</div>
-                        <p><strong>Thesis:</strong> Developing and Executing a Programmable Advanced Machine Vision System for
-                            Industrial Product Quality Assurance</p>
+                        <p><strong>Thesis:</strong> Developing and Executing a Programmable Advanced Machine Vision
+                            System for Industrial Product Quality Assurance</p>
                         <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);"><strong>Key
-                                Coursework:</strong> Data Structures &amp; Algorithms, Artificial Intelligence, Machine
+                                Coursework:</strong> Data Structures & Algorithms, Artificial Intelligence, Machine
                             Learning, Database Systems, Software Engineering, Computer Networks</p>
                     </div>
                     <div class="timeline-item">
@@ -1095,38 +1228,76 @@
                 </div>
                 <div class="hud-stagger">
                     <div class="skill-category" data-level="92">
-                        <h4>Banking &amp; ERP</h4>
-                        <p>Oracle FlexCube, Requirement Gap Analysis, UAT Facilitation, Parameterisation, BFSI Domain</p>
-                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                        <h4>Banking & ERP</h4>
+                        <p>Oracle FlexCube, Requirement Gap Analysis, UAT Facilitation, Parameterisation, BFSI Domain
+                        </p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="skill-category" data-level="88">
-                        <h4>AI, ML &amp; Data Analysis</h4>
-                        <p>TensorFlow, Scikit-learn, CNNs (U-Net, EfficientNet), Transfer Learning, OpenCV, AI Agent
-                            Development, Pandas, NumPy, SQL, Insight Reporting</p>
-                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                        <h4>AI, ML & Data Analysis</h4>
+                        <p>TensorFlow, Scikit-learn, CNNs, Transfer Learning, OpenCV, AI Agents, Pandas, SQL</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="skill-category" data-level="85">
-                        <h4>Development &amp; Databases</h4>
-                        <p>Next.js, TypeScript, MERN Stack, PHP, FastAPI, Streamlit, MySQL, MongoDB</p>
-                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                        <h4>Development & Databases</h4>
+                        <p>Next.js, TypeScript, MERN, PHP, FastAPI, Streamlit, MySQL, MongoDB</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="skill-category" data-level="78">
-                        <h4>Embedded &amp; IoT Systems</h4>
-                        <p>STM32, NVIDIA Jetson Nano, UART, CAN, GPIO, PWM, Embedded C</p>
-                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                        <h4>Embedded & IoT</h4>
+                        <p>STM32, Jetson Nano, UART, CAN, GPIO, Embedded C</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="skill-category" data-level="90">
-                        <h4>Tools &amp; Version Control</h4>
-                        <p>Git, GitHub, Jupyter Notebook, VS Code, Postman</p>
-                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                        <h4>Tools & VC</h4>
+                        <p>Git, GitHub, Jupyter, VS Code, Postman</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="skill-category" data-level="95">
                         <h4>Soft Skills</h4>
-                        <p>Analytical Thinking, Stakeholder Communication, Cross-functional Collaboration, Problem Solving, Time
-                            Management</p>
-                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                        <p>Analytical Thinking, Stakeholder Communication, Collaboration, Problem Solving</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ===== GOALS PANEL ===== -->
+        <div id="goals-details" class="side-panel" data-panel="goals">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-content">
+                <div class="hud-header">
+                    <span class="hud-sys-tag">SYS://ASPIRATIONS</span>
+                    <h3>Vision & Purpose</h3>
+                </div>
+                <div class="goals-typewriter" id="goals-text"></div>
             </div>
         </div>
     </div>
@@ -1137,7 +1308,7 @@
             <path d="M12 16v-4" />
             <path d="M12 8h.01" />
         </svg>
-        Drag to rotate • Scroll to zoom • Use navigation to explore
+        Scroll to navigate • Drag to orbit
     </div>
 
     <script>
@@ -1145,175 +1316,106 @@
         // Three.js Interactive Setup
         // ==========================================
         const canvas = document.querySelector('#bg-canvas');
-
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x000000); // Pure black void
+        scene.background = new THREE.Color(0x000000);
 
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 100);
         camera.position.set(5, 2, 8);
 
         // ==========================================
-        // Procedural Starfield & Nebulae Setup
+        // Procedural Starfield & Nebulae
         // ==========================================
         function createCircleTexture() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 32;
-            canvas.height = 32;
-            const ctx = canvas.getContext('2d');
-            const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-            gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
-            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-            ctx.fillStyle = gradient;
+            const c = document.createElement('canvas');
+            c.width = 32; c.height = 32;
+            const ctx = c.getContext('2d');
+            const g = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+            g.addColorStop(0, 'rgba(255,255,255,1)');
+            g.addColorStop(0.2, 'rgba(255,255,255,0.8)');
+            g.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = g;
             ctx.fillRect(0, 0, 32, 32);
-            return new THREE.CanvasTexture(canvas);
+            return new THREE.CanvasTexture(c);
         }
-
         function createNebulaTexture() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 128;
-            canvas.height = 128;
-            const ctx = canvas.getContext('2d');
-            const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-            gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.2)');
-            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-            ctx.fillStyle = gradient;
+            const c = document.createElement('canvas');
+            c.width = 128; c.height = 128;
+            const ctx = c.getContext('2d');
+            const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+            g.addColorStop(0, 'rgba(255,255,255,0.6)');
+            g.addColorStop(0.3, 'rgba(255,255,255,0.2)');
+            g.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = g;
             ctx.fillRect(0, 0, 128, 128);
-            return new THREE.CanvasTexture(canvas);
+            return new THREE.CanvasTexture(c);
         }
 
         const starTexture = createCircleTexture();
         const nebulaTexture = createNebulaTexture();
 
-        // 1. Twinkling Starfield — interactive with mouse
         const starCount = 8000;
         const starGeometry = new THREE.BufferGeometry();
         const starPositions = new Float32Array(starCount * 3);
         const starColors = new Float32Array(starCount * 3);
         const starSizes = new Float32Array(starCount);
-
         const colorsList = [
-            new THREE.Color('#ffffff'), // white
-            new THREE.Color('#cfe8f3'), // pale ice blue
-            new THREE.Color('#a5f3fc'), // cyan
-            new THREE.Color('#c4b5fd'), // soft violet
-            new THREE.Color('#38bdf8'), // blue
-            new THREE.Color('#e0f2fe')  // light blue
+            new THREE.Color('#ffffff'), new THREE.Color('#cfe8f3'), new THREE.Color('#a5f3fc'),
+            new THREE.Color('#c4b5fd'), new THREE.Color('#38bdf8'), new THREE.Color('#e0f2fe')
         ];
-
         const starBaseColors = [];
         const starBaseSizes = [];
         const starTwinkleSpeeds = [];
         const starTwinklePhases = [];
         for (let i = 0; i < starCount; i++) {
-            const u = Math.random();
-            const v = Math.random();
-            const theta = u * 2.0 * Math.PI;
-            const phi = Math.acos(2.0 * v - 1.0);
+            const u = Math.random(), v = Math.random();
+            const theta = u * 2.0 * Math.PI, phi = Math.acos(2.0 * v - 1.0);
             const r = 35 + Math.random() * 30;
-
             starPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
             starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
             starPositions[i * 3 + 2] = r * Math.cos(phi);
-
             const col = colorsList[Math.floor(Math.random() * colorsList.length)];
-            starColors[i * 3] = col.r;
-            starColors[i * 3 + 1] = col.g;
-            starColors[i * 3 + 2] = col.b;
+            starColors[i * 3] = col.r; starColors[i * 3 + 1] = col.g; starColors[i * 3 + 2] = col.b;
             starBaseColors.push(col.clone());
-
-            // Randomized per-star size, twinkle speed, and phase
             const baseSize = 0.12 + Math.random() * 0.5;
             starBaseSizes.push(baseSize);
             starSizes[i] = baseSize;
-            starTwinkleSpeeds.push(0.3 + Math.random() * 3.5); // each star blinks at its own rate
-            starTwinklePhases.push(Math.random() * Math.PI * 2); // random starting phase
+            starTwinkleSpeeds.push(0.3 + Math.random() * 3.5);
+            starTwinklePhases.push(Math.random() * Math.PI * 2);
         }
-
         starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
         starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
         starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
 
-        // Custom shader material for per-star size control
         const starMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                starTexture: { value: starTexture }
-            },
-            vertexShader: `
-                attribute float size;
-                varying vec3 vColor;
-                void main() {
-                    vColor = color;
-                    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-                    gl_PointSize = size * (300.0 / -mvPosition.z);
-                    gl_Position = projectionMatrix * mvPosition;
-                }
-            `,
-            fragmentShader: `
-                uniform sampler2D starTexture;
-                varying vec3 vColor;
-                void main() {
-                    gl_FragColor = vec4(vColor, 1.0) * texture2D(starTexture, gl_PointCoord);
-                }
-            `,
-            transparent: true,
-            depthWrite: false,
-            blending: THREE.AdditiveBlending,
-            vertexColors: true
+            uniforms: { starTexture: { value: starTexture } },
+            vertexShader: `attribute float size; varying vec3 vColor; void main(){vColor=color;vec4 mvPosition=modelViewMatrix*vec4(position,1.0);gl_PointSize=size*(300.0/-mvPosition.z);gl_Position=projectionMatrix*mvPosition;}`,
+            fragmentShader: `uniform sampler2D starTexture;varying vec3 vColor;void main(){gl_FragColor=vec4(vColor,1.0)*texture2D(starTexture,gl_PointCoord);}`,
+            transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, vertexColors: true
         });
-
         const starField = new THREE.Points(starGeometry, starMaterial);
         scene.add(starField);
 
-        // Mouse tracking in normalized device coordinates for star interaction
         const mouseNDC = new THREE.Vector2(9999, 9999);
         const raycaster = new THREE.Raycaster();
         raycaster.params.Points.threshold = 1.5;
 
-        // 2. Space Nebulae
+        // Nebulae
         const nebulaCount = 20;
         const nebulaGeometry = new THREE.BufferGeometry();
         const nebulaPositions = new Float32Array(nebulaCount * 3);
         const nebulaColors = new Float32Array(nebulaCount * 3);
-
-        const nebulaColorList = [
-            new THREE.Color('#6366f1'), // indigo
-            new THREE.Color('#a855f7'), // purple
-            new THREE.Color('#0284c7'), // deep cyan
-            new THREE.Color('#d946ef')  // magenta
-        ];
-
+        const nebulaColorList = [new THREE.Color('#6366f1'), new THREE.Color('#a855f7'), new THREE.Color('#0284c7'), new THREE.Color('#d946ef')];
         for (let i = 0; i < nebulaCount; i++) {
-            const r = 25 + Math.random() * 25;
-            const theta = Math.random() * 2.0 * Math.PI;
-            const phi = Math.acos(2.0 * Math.random() - 1.0);
-
+            const r = 25 + Math.random() * 25, theta = Math.random() * 2.0 * Math.PI, phi = Math.acos(2.0 * Math.random() - 1.0);
             nebulaPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
             nebulaPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
             nebulaPositions[i * 3 + 2] = r * Math.cos(phi);
-
             const col = nebulaColorList[Math.floor(Math.random() * nebulaColorList.length)];
-            nebulaColors[i * 3] = col.r;
-            nebulaColors[i * 3 + 1] = col.g;
-            nebulaColors[i * 3 + 2] = col.b;
+            nebulaColors[i * 3] = col.r; nebulaColors[i * 3 + 1] = col.g; nebulaColors[i * 3 + 2] = col.b;
         }
-
         nebulaGeometry.setAttribute('position', new THREE.BufferAttribute(nebulaPositions, 3));
         nebulaGeometry.setAttribute('color', new THREE.BufferAttribute(nebulaColors, 3));
-
-        const nebulaMaterial = new THREE.PointsMaterial({
-            size: 18,
-            vertexColors: true,
-            map: nebulaTexture,
-            transparent: true,
-            opacity: 0.03,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            sizeAttenuation: true
-        });
-
-        const nebulae = new THREE.Points(nebulaGeometry, nebulaMaterial);
+        const nebulae = new THREE.Points(nebulaGeometry, new THREE.PointsMaterial({ size: 18, vertexColors: true, map: nebulaTexture, transparent: true, opacity: 0.03, blending: THREE.AdditiveBlending, depthWrite: false }));
         scene.add(nebulae);
 
         // WebGL Renderer
@@ -1322,46 +1424,33 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.outputEncoding = THREE.sRGBEncoding;
 
-        // Set background to black color to serve as base void
-        scene.background = new THREE.Color(0x000000); // Keep pure black for deep space
-
-        // Add explicit scene lighting to make the 3D model look bright and clear
+        // Lighting
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.08);
         scene.add(ambientLight);
-
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
         directionalLight.position.set(5, 12, 8);
         scene.add(directionalLight);
 
-        // Load Space Background Image into custom sky sphere for brightness and rotation control
+        // Sky sphere
         let skySphere;
         const textureLoader = new THREE.TextureLoader();
         textureLoader.load('space_bg.png', function (texture) {
             texture.mapping = THREE.EquirectangularReflectionMapping;
             texture.encoding = THREE.sRGBEncoding;
-
             const skyGeo = new THREE.SphereGeometry(70, 32, 32);
-            const skyMat = new THREE.MeshBasicMaterial({
-                map: texture,
-                side: THREE.BackSide,
-                transparent: true,
-                opacity: 0.05  // Nearly invisible — just the faintest cosmic tint
-            });
+            const skyMat = new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide, transparent: true, opacity: 0.05 });
             skySphere = new THREE.Mesh(skyGeo, skyMat);
             scene.add(skySphere);
+            scene.environment = texture;
+        }, undefined, function (err) { console.error("Failed to load space_bg.png", err); });
 
-            scene.environment = texture; // Reflects the golden space light onto models!
-        }, undefined, function (err) {
-            console.error("Failed to load space_bg.png texture: ", err);
-        });
-
-        // CSS3D Renderer
+        // CSS3D
         const cssContainer = document.getElementById('css-container');
         const cssRenderer = new THREE.CSS3DRenderer();
         cssRenderer.setSize(window.innerWidth, window.innerHeight);
         cssContainer.appendChild(cssRenderer.domElement);
 
-        // OrbitControls for Drag to Rotate & Scroll to Zoom
+        // OrbitControls
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.target.set(0, 0.5, 0);
         controls.update();
@@ -1372,149 +1461,273 @@
         // Loaders
         const loadingScreen = document.getElementById('loading-screen');
         const loadingProgress = document.getElementById('loading-progress');
-
         const dracoLoader = new THREE.DRACOLoader();
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
-
         const loader = new THREE.GLTFLoader();
         loader.setDRACOLoader(dracoLoader);
-
         let mixer;
         const clock = new THREE.Clock();
+        let modelLoaded = false;
 
-        // Viewpoints for each section
+        // Viewpoints
         const viewpoints = {
             home: { camera: new THREE.Vector3(5, 2, 8), target: new THREE.Vector3(0, 0.5, 0) },
             about: { camera: new THREE.Vector3(2, 3, 4), target: new THREE.Vector3(1, 1, 0) },
             experience: { camera: new THREE.Vector3(-3, 2, 5), target: new THREE.Vector3(-1, 0.5, 1) },
             projects: { camera: new THREE.Vector3(0, 4, -5), target: new THREE.Vector3(0, 1, -1) },
             education: { camera: new THREE.Vector3(4, 1, -4), target: new THREE.Vector3(2, 0.5, -2) },
-            skills: { camera: new THREE.Vector3(-4, 3, -3), target: new THREE.Vector3(-1, 1, -1) }
+            skills: { camera: new THREE.Vector3(-4, 3, -3), target: new THREE.Vector3(-1, 1, -1) },
+            goals: { camera: new THREE.Vector3(0, 8, 14), target: new THREE.Vector3(0, 0, 0) }
         };
 
-        // Function to create embedded 3D signs
+        // Lighting references for dimming
+        let originalAmbientIntensity = 0.08;
+        let originalDirectionalIntensity = 1.5;
+        let isDroneView = false;
+
+        // 3D Signs
         function create3DText(htmlContent, vpKey, scale) {
             const vp = viewpoints[vpKey];
             const div = document.createElement('div');
             div.className = 'sign-3d';
             div.innerHTML = htmlContent;
-
             const object = new THREE.CSS3DObject(div);
-            // Place it exactly at the target point
             object.position.copy(vp.target);
             object.scale.set(scale, scale, scale);
-
-            // Point sign perfectly towards the camera's final viewpoint
             object.lookAt(vp.camera);
-
             scene.add(object);
             return object;
         }
-
-        // Initialize Signs
         const signs = {
-            home: create3DText(`<h1>S M Najmul Alam</h1><p style="font-size:1.15rem; color: var(--accent-primary); font-weight:600; margin-bottom:5px;">Business Analyst &amp; AI Engineer</p><p style="font-size:0.9rem; color:var(--text-secondary);">Core Banking • Intelligent Automation • ML Solutions</p>`, 'home', 0.005),
-            about: create3DText(`<h2>About Me</h2><p style="font-size:1rem; line-height:1.4;">Bridging banking operations and advanced technology. Specializing in Oracle FlexCube 14.8 implementations and AI agent integrations.</p>`, 'about', 0.004),
-            experience: create3DText(`<h2>Experience</h2><p style="font-size:1.05rem; line-height:1.4;"><strong>Business Analyst at Data Edge Ltd.</strong><br>Leading gap analysis for NRB Bank FlexCube 14.8 and engineering AI workflow agents.</p>`, 'experience', 0.004),
-            projects: create3DText(`<h2>Selected Works</h2><ul style="font-size: 0.95rem; text-align: left; padding-left: 20px; margin-top: 10px;"><li>FlexCube AI Platform (Flexy)</li><li>Machine Vision QA System</li><li>Brain Tumor MRI Segmenter</li></ul>`, 'projects', 0.004),
-            education: create3DText(`<h2>Education</h2><p style="font-size:1rem; line-height:1.4;"><strong>B.Sc. in CSE • BRAC University</strong><br>CGPA: 3.86/4.00 • Merit Scholarship<br>Thesis: Machine Vision System QA</p>`, 'education', 0.004),
-            skills: create3DText(`<h2>Expertise</h2><div style="margin-top:10px;"><span class="tech-tag">FlexCube</span><span class="tech-tag">AI Agents</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Next.js</span><span class="tech-tag">Data Analysis</span></div>`, 'skills', 0.004)
+            home: create3DText(`<h1>S M Najmul Alam</h1><p style="font-size:1.15rem;color:var(--accent-primary);font-weight:600;margin-bottom:5px;">Business Analyst & AI Engineer</p><p style="font-size:0.9rem;color:var(--text-secondary);">Core Banking • Intelligent Automation • ML Solutions</p>`, 'home', 0.005),
+            about: create3DText(`<h2>About Me</h2><p style="font-size:1rem;line-height:1.4;">Bridging banking and advanced tech. Oracle FlexCube 14.8 specialist & AI agent engineer.</p>`, 'about', 0.004),
+            experience: create3DText(`<h2>Experience</h2><p style="font-size:1.05rem;line-height:1.4;"><strong>Business Analyst at Data Edge Ltd.</strong><br>Leading gap analysis for NRB Bank FlexCube 14.8.</p>`, 'experience', 0.004),
+            projects: create3DText(`<h2>Selected Works</h2><ul style="font-size:0.95rem;text-align:left;padding-left:20px;margin-top:10px;"><li>FlexCube AI Platform</li><li>Machine Vision QA</li><li>Brain MRI Segmenter</li></ul>`, 'projects', 0.004),
+            education: create3DText(`<h2>Education</h2><p style="font-size:1rem;line-height:1.4;"><strong>B.Sc. CSE • BRAC University</strong><br>CGPA: 3.86/4.00 • Merit Scholar</p>`, 'education', 0.004),
+            skills: create3DText(`<h2>Expertise</h2><div style="margin-top:10px;"><span class="tech-tag">FlexCube</span><span class="tech-tag">AI Agents</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Next.js</span></div>`, 'skills', 0.004)
         };
 
-        loader.load(
-            './models/LittlestTokyo.glb',
-            function (gltf) {
-                const model = gltf.scene;
-                model.position.set(1, 1, 0);
-                model.scale.set(0.01, 0.01, 0.01);
-
-                // Enhance brightness and reflections of the model materials
-                model.traverse(function (child) {
-                    if (child.isMesh) {
-                        child.material.envMapIntensity = 1.0;
-                        if (child.material.emissive) {
-                            child.material.emissiveIntensity = 0.2;
-                        }
-                    }
-                });
-
-                scene.add(model);
-
-                mixer = new THREE.AnimationMixer(model);
-                mixer.clipAction(gltf.animations[0]).play();
-
-                // Hide loading screen
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    // Trigger initial animation to home position
-                    focusOnTarget('home');
-                }, 500);
-            },
-            function (xhr) {
-                if (xhr.lengthComputable) {
-                    const percentComplete = (xhr.loaded / xhr.total) * 100;
-                    loadingProgress.style.width = percentComplete + '%';
+        // Load model
+        loader.load('./models/LittlestTokyo.glb', function (gltf) {
+            const model = gltf.scene;
+            model.position.set(1, 1, 0);
+            model.scale.set(0.01, 0.01, 0.01);
+            model.traverse(function (child) {
+                if (child.isMesh) {
+                    child.material.envMapIntensity = 1.0;
+                    if (child.material.emissive) child.material.emissiveIntensity = 0.2;
                 }
-            },
-            function (e) {
-                console.error(e);
-                loadingScreen.innerHTML = '<h2 style="color:white;">Error loading 3D model. Please refresh.</h2>';
-            }
-        );
+            });
+            scene.add(model);
+            mixer = new THREE.AnimationMixer(model);
+            mixer.clipAction(gltf.animations[0]).play();
+            modelLoaded = true;
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => { loadingScreen.style.display = 'none'; focusOnTarget('home'); }, 500);
+        }, function (xhr) {
+            if (xhr.lengthComputable) loadingProgress.style.width = (xhr.loaded / xhr.total * 100) + '%';
+        }, function (e) {
+            console.error(e);
+            loadingScreen.innerHTML = '<h2 style="color:white;">Error loading 3D model. Please refresh.</h2>';
+        });
 
-        // Navigation Linking
+        // ==========================================
+        // Scroll Navigation (accumulator-based)
+        // ==========================================
+        const sectionOrder = ['home', 'about', 'experience', 'projects', 'education', 'skills', 'goals'];
+        let currentSectionIndex = 0;
+        let isScrolling = false;
+
+        function navigateByScroll(direction) {
+            if (isScrolling) return;
+            const newIndex = currentSectionIndex + direction;
+            if (newIndex < 0 || newIndex >= sectionOrder.length) return;
+            isScrolling = true;
+            currentSectionIndex = newIndex;
+            focusOnTarget(sectionOrder[currentSectionIndex]);
+            setTimeout(() => { isScrolling = false; }, 1200);
+        }
+
+        const originalFocusOnTarget = focusOnTarget;
+        focusOnTarget = function (sectionId) {
+            originalFocusOnTarget(sectionId);
+            const idx = sectionOrder.indexOf(sectionId);
+            if (idx !== -1) currentSectionIndex = idx;
+        };
+
+        // Wheel accumulator — prevents double-fire
+        let wheelAccumulator = 0;
+        const wheelThreshold = 80;
+
+        window.addEventListener('wheel', (e) => {
+            const visiblePanels = document.querySelectorAll('.side-panel.visible-panel');
+            let overPanel = false;
+            for (const panel of visiblePanels) {
+                const rect = panel.getBoundingClientRect();
+                if (e.clientX >= rect.left && e.clientX <= rect.right &&
+                    e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    overPanel = true; break;
+                }
+            }
+            if (overPanel) return;
+
+            wheelAccumulator += e.deltaY;
+            if (Math.abs(wheelAccumulator) >= wheelThreshold) {
+                const dir = wheelAccumulator > 0 ? 1 : -1;
+                wheelAccumulator = 0;
+                navigateByScroll(dir);
+            }
+        }, { passive: true });
+
+        // Touch
+        let touchStartY = 0;
+        window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
+        window.addEventListener('touchend', (e) => {
+            const diff = touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 40) navigateByScroll(diff > 0 ? 1 : -1);
+        }, { passive: true });
+
+        // Navigation clicks
         document.querySelectorAll('.nav-logo, .nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                const targetId = e.target.getAttribute('data-target');
-                focusOnTarget(targetId);
+                focusOnTarget(e.target.getAttribute('data-target'));
             });
         });
 
-        // Update active states
         function updateNavState(id) {
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            const navLink = document.querySelector(`.nav-link[data-target="${id}"]`);
-            if (navLink) navLink.classList.add('active');
+            const nl = document.querySelector(`.nav-link[data-target="${id}"]`);
+            if (nl) nl.classList.add('active');
         }
 
-        // Camera Flight Animation
+        // ==========================================
+        // focusOnTarget — The main navigation function
+        // ==========================================
         function focusOnTarget(sectionId) {
             updateNavState(sectionId);
-
             const vp = viewpoints[sectionId];
             if (!vp) return;
 
+            // Hide all signs, show current
             Object.keys(signs).forEach(key => {
-                if (key === sectionId) {
-                    signs[key].element.classList.add('visible-sign');
-                } else {
-                    signs[key].element.classList.remove('visible-sign');
-                }
+                if (key === sectionId) signs[key].element.classList.add('visible-sign');
+                else signs[key].element.classList.remove('visible-sign');
             });
 
+            // Handle drone view for "goals"
+            if (sectionId === 'goals') {
+                isDroneView = true;
+                // Dim lights
+                ambientLight.intensity = 0.02;
+                directionalLight.intensity = 0.3;
+                // Disable orbit controls auto-rotation interference
+                controls.autoRotate = false;
+                controls.enableRotate = false;
+                // Start goals typewriter
+                startGoalsTyping();
+            } else {
+                isDroneView = false;
+                ambientLight.intensity = originalAmbientIntensity;
+                directionalLight.intensity = originalDirectionalIntensity;
+                controls.enableRotate = true;
+                controls.autoRotate = false;
+            }
+
+            // Stagger reveal
+            const activePanel = document.querySelector(`.side-panel[data-panel="${sectionId}"]`);
+            if (activePanel) {
+                const staggerItems = activePanel.querySelectorAll('.hud-stagger > *');
+                staggerItems.forEach((item, index) => {
+                    item.classList.remove('revealed');
+                    setTimeout(() => item.classList.add('revealed'), 300 + index * 100);
+                });
+            }
+
+            // Toggle panels
             document.querySelectorAll('.side-panel').forEach(panel => {
-                if (panel.getAttribute('data-panel') === sectionId) {
-                    panel.classList.add('visible-panel');
-                } else {
-                    panel.classList.remove('visible-panel');
-                }
+                if (panel.getAttribute('data-panel') === sectionId) panel.classList.add('visible-panel');
+                else panel.classList.remove('visible-panel');
             });
 
-            // Animate Camera Position
+            // Animate camera
             new TWEEN.Tween(camera.position)
                 .to({ x: vp.camera.x, y: vp.camera.y, z: vp.camera.z }, 2000)
-                .easing(TWEEN.Easing.Cubic.InOut)
-                .start();
-
-            // Animate Camera Target (OrbitControls target)
+                .easing(TWEEN.Easing.Cubic.InOut).start();
             new TWEEN.Tween(controls.target)
                 .to({ x: vp.target.x, y: vp.target.y, z: vp.target.z }, 2000)
-                .easing(TWEEN.Easing.Cubic.InOut)
-                .start();
+                .easing(TWEEN.Easing.Cubic.InOut).start();
         }
 
+        // ==========================================
+        // Goals Typewriter
+        // ==========================================
+        let goalsTypingStarted = false;
+
+        function startGoalsTyping() {
+            if (goalsTypingStarted) return;
+            goalsTypingStarted = true;
+
+            const el = document.getElementById('goals-text');
+            el.innerHTML = '';
+
+            const lines = [
+                { prefix: '>> ', text: 'LIFE GOAL', color: 'rgba(56,189,248,0.5)', delay: 500 },
+                { prefix: '', text: 'To bridge the gap between cutting-edge AI', color: '#f8fafc', delay: 1500 },
+                { prefix: '', text: 'and real-world banking — making financial', color: '#f8fafc', delay: 2200 },
+                { prefix: '', text: 'systems smarter, more inclusive, and', color: '#f8fafc', delay: 2900 },
+                { prefix: '', text: 'radically more efficient for everyone.', color: '#f8fafc', delay: 3600 },
+                { prefix: '', text: '', color: '#f8fafc', delay: 4100 },
+                { prefix: '>> ', text: 'PROFESSIONAL GOAL', color: 'rgba(56,189,248,0.5)', delay: 4300 },
+                { prefix: '', text: 'To lead the next generation of autonomous', color: '#f8fafc', delay: 5300 },
+                { prefix: '', text: 'AI agents in core banking — architecting', color: '#f8fafc', delay: 6000 },
+                { prefix: '', text: 'systems that learn, adapt, and optimize', color: '#f8fafc', delay: 6700 },
+                { prefix: '', text: 'business workflows at scale.', color: '#f8fafc', delay: 7400 },
+                { prefix: '', text: '', color: '#f8fafc', delay: 7900 },
+                { prefix: '>> ', text: 'MISSION', color: 'rgba(56,189,248,0.5)', delay: 8100 },
+                { prefix: '', text: '"Build. Deploy. Transform."', color: '#38bdf8', delay: 9100 }
+            ];
+
+            let charIndex = 0;
+            let lineIndex = 0;
+
+            function typeNextChar() {
+                if (lineIndex >= lines.length) return;
+
+                const lineData = lines[lineIndex];
+                const span = document.createElement('span');
+                span.className = 'goal-line';
+                span.style.color = lineData.color;
+                span.textContent = lineData.prefix + lineData.text.charAt(0) + '█';
+                el.appendChild(span);
+
+                // Scroll into view
+                el.scrollTop = el.scrollHeight;
+
+                let c = 0;
+                const fullText = lineData.prefix + lineData.text;
+
+                function typeChar() {
+                    if (c >= fullText.length) {
+                        span.textContent = fullText;
+                        span.classList.add('visible');
+                        lineIndex++;
+                        setTimeout(typeNextChar, lineData.delay || 1200);
+                        return;
+                    }
+                    span.textContent = fullText.substring(0, c + 1) + '█';
+                    c++;
+                    setTimeout(typeChar, 30 + Math.random() * 20);
+                }
+
+                setTimeout(typeChar, 300);
+            }
+
+            typeNextChar();
+        }
+
+        // ==========================================
         // Resize
+        // ==========================================
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
@@ -1522,204 +1735,132 @@
             cssRenderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        // ==========================================
         // Animation Loop
+        // ==========================================
         function animate() {
             requestAnimationFrame(animate);
             TWEEN.update();
             controls.update();
-
             const delta = clock.getDelta();
-            if (mixer) {
-                mixer.update(delta);
+            if (mixer) mixer.update(delta);
+
+            // Drone auto-orbit in goals view
+            if (isDroneView && modelLoaded) {
+                const radius = 14;
+                const height = 8 + Math.sin(clock.elapsedTime * 0.15) * 1.5;
+                const angle = clock.elapsedTime * 0.12;
+                camera.position.x = Math.sin(angle) * radius;
+                camera.position.z = Math.cos(angle) * radius;
+                camera.position.y = height;
+                controls.target.set(0, 0, 0);
             }
 
-            // Slowly rotate space background to give dynamic life
-            if (skySphere) {
-                skySphere.rotation.y += 0.00004;
-            }
+            if (skySphere) skySphere.rotation.y += 0.00004;
             if (starField) {
                 starField.rotation.y += 0.00008;
-
-                // Animate twinkling: each star has its own speed and phase
                 if (starGeometry && starBaseColors.length > 0) {
                     const colorsAttr = starGeometry.attributes.color.array;
                     const sizesAttr = starGeometry.attributes.size.array;
                     const time = clock.getElapsedTime();
-
-                    // Project mouse into world space for star interaction
                     raycaster.setFromCamera(mouseNDC, camera);
                     const mouseRay = raycaster.ray;
-
                     for (let i = 0; i < starCount; i++) {
-                        // Per-star twinkle with unique speed and phase
                         const speed = starTwinkleSpeeds[i];
                         const phase = starTwinklePhases[i];
                         const twinkle = 0.15 + 0.85 * Math.pow(Math.abs(Math.sin(time * speed + phase)), 2.0);
                         const baseCol = starBaseColors[i];
-
-                        // Mouse proximity interaction — stars near cursor brighten
-                        const sx = starPositions[i * 3];
-                        const sy = starPositions[i * 3 + 1];
-                        const sz = starPositions[i * 3 + 2];
+                        const sx = starPositions[i * 3], sy = starPositions[i * 3 + 1], sz = starPositions[i * 3 + 2];
                         const starPos = new THREE.Vector3(sx, sy, sz);
                         const distToRay = mouseRay.distanceToPoint(starPos);
-                        const proxGlow = Math.max(0, 1.0 - distToRay / 5.0); // stars within radius 5 glow
+                        const proxGlow = Math.max(0, 1.0 - distToRay / 5.0);
                         const brightMult = twinkle + proxGlow * 1.2;
-
                         colorsAttr[i * 3] = Math.min(1, baseCol.r * brightMult);
                         colorsAttr[i * 3 + 1] = Math.min(1, baseCol.g * brightMult);
                         colorsAttr[i * 3 + 2] = Math.min(1, baseCol.b * brightMult);
-
-                        // Size pulse near cursor
                         sizesAttr[i] = starBaseSizes[i] * (1 + proxGlow * 2.5);
                     }
                     starGeometry.attributes.color.needsUpdate = true;
                     starGeometry.attributes.size.needsUpdate = true;
                 }
             }
-            if (nebulae) {
-                nebulae.rotation.y -= 0.00005;
-                nebulae.rotation.x += 0.00003;
-            }
+            if (nebulae) { nebulae.rotation.y -= 0.00005; nebulae.rotation.x += 0.00003; }
 
             renderer.render(scene, camera);
             cssRenderer.render(scene, camera);
         }
-
         animate();
 
         // ==========================================
-        // Sci-Fi Space Cursor Trail — subtle plasma warp
+        // Cursor Trail
         // ==========================================
         const cursorCanvas = document.createElement('canvas');
         cursorCanvas.id = 'magic-cursor-canvas';
-        Object.assign(cursorCanvas.style, {
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100vw',
-            height: '100vh',
-            pointerEvents: 'none',
-            zIndex: '99999'
-        });
+        Object.assign(cursorCanvas.style, { position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh', pointerEvents: 'none', zIndex: '99999' });
         document.body.appendChild(cursorCanvas);
-
         const ctx = cursorCanvas.getContext('2d');
-        let width = cursorCanvas.width = window.innerWidth;
-        let height = cursorCanvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = cursorCanvas.width = window.innerWidth;
-            height = cursorCanvas.height = window.innerHeight;
-        });
-
+        let w = cursorCanvas.width = window.innerWidth;
+        let h = cursorCanvas.height = window.innerHeight;
+        window.addEventListener('resize', () => { w = cursorCanvas.width = window.innerWidth; h = cursorCanvas.height = window.innerHeight; });
         const particles = [];
         const mouse = { x: null, y: null, prevX: null, prevY: null };
 
         class PlasmaParticle {
             constructor(x, y, vx, vy) {
-                this.x = x;
-                this.y = y;
+                this.x = x; this.y = y;
                 this.size = Math.random() * 1.5 + 0.3;
-                // Inherit velocity from cursor motion + small random drift
                 this.speedX = vx * 0.15 + (Math.random() - 0.5) * 0.4;
                 this.speedY = vy * 0.15 + (Math.random() - 0.5) * 0.4;
-                // Cool sci-fi tones: ice blue, cyan, white, faint violet
-                const colors = [
-                    [140, 220, 255],  // ice blue
-                    [56, 189, 248],   // cyan
-                    [220, 240, 255],  // near-white blue
-                    [170, 180, 255],  // soft lavender
-                    [255, 255, 255],  // pure white
-                ];
+                const colors = [[140, 220, 255], [56, 189, 248], [220, 240, 255], [170, 180, 255], [255, 255, 255]];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
                 this.opacity = 0.6 + Math.random() * 0.4;
                 this.decay = 0.008 + Math.random() * 0.012;
                 this.life = 1.0;
             }
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.speedX *= 0.97;
-                this.speedY *= 0.97;
-                this.life -= this.decay;
-                this.opacity = this.life * 0.8;
+                this.x += this.speedX; this.y += this.speedY;
+                this.speedX *= 0.97; this.speedY *= 0.97;
+                this.life -= this.decay; this.opacity = this.life * 0.8;
             }
             draw(ctx) {
                 if (this.life <= 0) return;
                 const [r, g, b] = this.color;
-                // Glow layer
-                const glowSize = this.size * 3;
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowSize);
-                gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.5})`);
-                gradient.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.15})`);
-                gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, glowSize, 0, Math.PI * 2);
-                ctx.fill();
-                // Core dot
-                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;  
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2);
-                ctx.fill();
+                const gs = this.size * 3;
+                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, gs);
+                grad.addColorStop(0, `rgba(${r},${g},${b},${this.opacity * 0.5})`);
+                grad.addColorStop(0.4, `rgba(${r},${g},${b},${this.opacity * 0.15})`);
+                grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+                ctx.fillStyle = grad;
+                ctx.beginPath(); ctx.arc(this.x, this.y, gs, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = `rgba(${r},${g},${b},${this.opacity})`;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2); ctx.fill();
             }
         }
 
         window.addEventListener('mousemove', (e) => {
-            mouse.prevX = mouse.x;
-            mouse.prevY = mouse.y;
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-
-            // Update NDC for star interaction
+            mouse.prevX = mouse.x; mouse.prevY = mouse.y;
+            mouse.x = e.clientX; mouse.y = e.clientY;
             mouseNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
             mouseNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-            // Calculate cursor velocity
             const vx = mouse.prevX !== null ? mouse.x - mouse.prevX : 0;
             const vy = mouse.prevY !== null ? mouse.y - mouse.prevY : 0;
             const speed = Math.sqrt(vx * vx + vy * vy);
-
-            // Spawn fewer particles — quality over quantity
             const count = Math.min(Math.floor(speed * 0.15) + 1, 3);
             for (let i = 0; i < count; i++) {
-                particles.push(new PlasmaParticle(
-                    mouse.x + (Math.random() - 0.5) * 4,
-                    mouse.y + (Math.random() - 0.5) * 4,
-                    vx, vy
-                ));
-            }
-        });
-
-        window.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                mouse.prevX = mouse.x;
-                mouse.prevY = mouse.y;
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
-                const vx = mouse.prevX !== null ? mouse.x - mouse.prevX : 0;
-                const vy = mouse.prevY !== null ? mouse.y - mouse.prevY : 0;
-                for (let i = 0; i < 1; i++) {
-                    particles.push(new PlasmaParticle(mouse.x, mouse.y, vx, vy));
-                }
+                particles.push(new PlasmaParticle(mouse.x + (Math.random() - 0.5) * 4, mouse.y + (Math.random() - 0.5) * 4, vx, vy));
             }
         });
 
         function animateCursorTrail() {
-            ctx.clearRect(0, 0, width, height);
+            ctx.clearRect(0, 0, w, h);
             for (let i = particles.length - 1; i >= 0; i--) {
                 const p = particles[i];
-                p.update();
-                p.draw(ctx);
-                if (p.life <= 0) {
-                    particles.splice(i, 1);
-                }
+                p.update(); p.draw(ctx);
+                if (p.life <= 0) particles.splice(i, 1);
             }
             requestAnimationFrame(animateCursorTrail);
         }
         animateCursorTrail();
-
     </script>
 </body>
 
