@@ -47,8 +47,6 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            font-family: var(--font-body);
             color: var(--text-primary);
             overflow: hidden;
             -webkit-font-smoothing: antialiased;
@@ -359,6 +357,537 @@
             .nav-links {
                 display: none;
             }
+
+            #hero-intro {
+                left: 20px !important;
+                bottom: 20px !important;
+            }
+
+            #hero-intro .hero-card {
+                max-width: 320px !important;
+            }
+
+            .side-panel.visible-panel {
+                width: 100vw !important;
+                border-radius: 0 !important;
+            }
+        }
+
+        /* ==========================================
+           CINEMATIC HERO INTRO
+           ========================================== */
+        #hero-intro {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        #hero-intro .hero-card {
+            position: relative;
+            max-width: 520px;
+            padding: 30px 36px;
+            background: rgba(2, 6, 14, 0.75);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 4px;
+            backdrop-filter: blur(16px);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        #hero-intro .hero-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Shrink to compact badge after intro */
+        #hero-intro .hero-card.compact {
+            max-width: 320px;
+            padding: 16px 22px;
+        }
+
+        #hero-intro .hero-card.compact .hero-subtitle,
+        #hero-intro .hero-card.compact .hero-tagline {
+            display: none;
+        }
+
+        #hero-intro .hero-card.compact .hero-name {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        #hero-intro .hero-card.compact .hero-title-line {
+            font-size: 0.75rem;
+        }
+
+        /* Scanline overlay on hero */
+        #hero-intro .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(56, 189, 248, 0.03) 2px,
+                rgba(56, 189, 248, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+            animation: scanlineDrift 8s linear infinite;
+        }
+
+        /* Glowing top-edge accent */
+        #hero-intro .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 30%, var(--accent-primary) 70%, transparent 100%);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+            animation: borderPulse 3s ease-in-out infinite;
+        }
+
+        .hero-sys-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            color: rgba(56, 189, 248, 0.5);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+            /* Glitch effect via animation */
+            animation: none; /* Activated via JS */
+        }
+
+        .hero-name.glitch-active {
+            animation: glitchText 0.4s ease-in-out 3;
+        }
+
+        .hero-title-line {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--accent-primary);
+            width: 0;
+            animation: none; /* Activated via JS */
+        }
+
+        .hero-title-line.typing {
+            animation: typewriter 2s steps(35) forwards, blinkCursor 0.6s step-end infinite;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 1s ease 0.5s;
+        }
+
+        .hero-subtitle.visible {
+            opacity: 1;
+        }
+
+        .hero-tagline {
+            font-family: 'Courier New', monospace;
+            font-size: 0.6rem;
+            color: rgba(56, 189, 248, 0.35);
+            letter-spacing: 2px;
+            margin-top: 14px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 1s ease 1s;
+        }
+
+        .hero-tagline.visible {
+            opacity: 1;
+        }
+
+        /* Holographic flicker */
+        .hero-card.holo-flicker {
+            animation: holoFlicker 4s ease-in-out infinite;
+        }
+
+        /* ==========================================
+           HUD SIDE PANELS
+           ========================================== */
+        .side-panel {
+            position: absolute;
+            right: -420px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            background: rgba(2, 6, 14, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            padding: 0;
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.08), inset 0 0 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            pointer-events: none;
+            transition: right 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+            opacity: 0;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Scanline overlay */
+        .side-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(56, 189, 248, 0.02) 2px,
+                rgba(56, 189, 248, 0.02) 4px
+            );
+            pointer-events: none;
+            z-index: 0;
+            animation: scanlineDrift 10s linear infinite;
+            border-radius: 4px;
+        }
+
+        /* Animated border trace on appear */
+        .side-panel::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            background-size: 200% 100%;
+            z-index: -1;
+            opacity: 0;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 1px;
+            transition: opacity 0.5s ease;
+        }
+
+        .side-panel.visible-panel::after {
+            opacity: 1;
+            animation: borderSweep 2s ease-out forwards;
+        }
+
+        .side-panel.visible-panel {
+            right: 0;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* HUD corner brackets */
+        .hud-corner {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hud-corner::before,
+        .hud-corner::after {
+            content: '';
+            position: absolute;
+            background: var(--accent-primary);
+            box-shadow: 0 0 6px var(--accent-primary);
+        }
+
+        .hud-corner.top-left { top: 6px; left: 6px; }
+        .hud-corner.top-left::before { width: 16px; height: 1px; top: 0; left: 0; }
+        .hud-corner.top-left::after { width: 1px; height: 16px; top: 0; left: 0; }
+
+        .hud-corner.top-right { top: 6px; right: 6px; }
+        .hud-corner.top-right::before { width: 16px; height: 1px; top: 0; right: 0; }
+        .hud-corner.top-right::after { width: 1px; height: 16px; top: 0; right: 0; }
+
+        .hud-corner.bottom-left { bottom: 6px; left: 6px; }
+        .hud-corner.bottom-left::before { width: 16px; height: 1px; bottom: 0; left: 0; }
+        .hud-corner.bottom-left::after { width: 1px; height: 16px; bottom: 0; left: 0; }
+
+        .hud-corner.bottom-right { bottom: 6px; right: 6px; }
+        .hud-corner.bottom-right::before { width: 16px; height: 1px; bottom: 0; right: 0; }
+        .hud-corner.bottom-right::after { width: 1px; height: 16px; bottom: 0; right: 0; }
+
+        /* HUD panel content wrapper */
+        .hud-content {
+            position: relative;
+            z-index: 2;
+            padding: 28px 28px 24px;
+        }
+
+        /* HUD section header */
+        .hud-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hud-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            box-shadow: 0 0 8px var(--accent-primary);
+        }
+
+        .side-panel.visible-panel .hud-header::after {
+            animation: scanBarSweep 1.2s ease-out 0.3s forwards;
+        }
+
+        .hud-sys-tag {
+            font-family: 'Courier New', monospace;
+            font-size: 0.55rem;
+            color: rgba(56, 189, 248, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .hud-header h3 {
+            font-family: var(--font-display);
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Staggered reveal for children */
+        .hud-stagger > * {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .hud-stagger > *.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill bars */
+        .skill-bar-container {
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+
+        .skill-bar-track {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-primary), #818cf8);
+            border-radius: 2px;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .skill-bar-fill.animate {
+            /* Width set via JS inline style */
+        }
+
+        /* Override old side-panel styles for new HUD */
+        .side-panel h3 {
+            font-family: var(--font-display);
+            color: var(--text-primary);
+            margin-bottom: 0;
+            font-size: 1.4rem;
+        }
+
+        .side-panel h4 {
+            color: var(--text-primary);
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .side-panel p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .side-panel .contact-info {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(56, 189, 248, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .side-panel .contact-info a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .side-panel .contact-info a:hover {
+            text-shadow: 0 0 8px var(--accent-primary);
+        }
+
+        .timeline-item,
+        .project-item,
+        .skill-category {
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.06);
+            padding-bottom: 14px;
+        }
+
+        .timeline-item:last-child,
+        .project-item:last-child,
+        .skill-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .company,
+        .tech {
+            font-size: 0.78rem;
+            color: var(--accent-primary);
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5px;
+        }
+
+        .side-panel ul {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 18px;
+            line-height: 1.6;
+        }
+
+        .side-panel ul li {
+            margin-bottom: 5px;
+        }
+
+        .highlight {
+            color: var(--accent-primary) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .side-panel::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .side-panel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .side-panel::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.2);
+            border-radius: 2px;
+        }
+
+        /* ==========================================
+           KEYFRAME ANIMATIONS
+           ========================================== */
+        @keyframes glitchText {
+            0% { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translate(0); }
+            20% { text-shadow: -3px 0 #ff0040, 3px 0 #00ffff; transform: translate(-2px, 1px); }
+            40% { text-shadow: 3px 0 #ff0040, -3px 0 #00ffff; transform: translate(2px, -1px); }
+            60% { text-shadow: -1px 0 #ff0040, 1px 0 #00ffff; transform: translate(1px, 0); }
+            80% { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translate(-1px, 1px); }
+            100% { text-shadow: 0 0 transparent; transform: translate(0); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blinkCursor {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes scanlineDrift {
+            from { transform: translateY(0); }
+            to { transform: translateY(20px); }
+        }
+
+        @keyframes borderPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes holoFlicker {
+            0%, 95%, 100% { opacity: 1; }
+            96% { opacity: 0.85; }
+            97% { opacity: 1; }
+            98% { opacity: 0.9; }
+        }
+
+        @keyframes borderSweep {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes scanBarSweep {
+            from { left: -100%; }
+            to { left: 100%; }
         }
     </style>
 </head>
@@ -378,6 +907,17 @@
     <canvas id="bg-canvas"></canvas>
     <div id="css-container"></div>
 
+    <!-- Cinematic Hero Intro -->
+    <div id="hero-intro">
+        <div class="hero-card">
+            <div class="hero-sys-label">SYS://IDENTITY.INIT</div>
+            <div class="hero-name">S M Najmul Alam</div>
+            <div class="hero-title-line">Business Analyst & AI Engineer</div>
+            <div class="hero-subtitle">Core Banking • Intelligent Automation • ML Solutions</div>
+            <div class="hero-tagline">[ DHAKA, BANGLADESH // DATA EDGE LTD. ]</div>
+        </div>
+    </div>
+
     <div id="ui-layer">
         <nav>
             <div class="nav-container">
@@ -393,141 +933,200 @@
         </nav>
 
         <div id="about-details" class="side-panel" data-panel="about">
-            <h3>Professional Summary</h3>
-            <p>I am a dynamic <strong>Business Analyst &amp; AI Engineer</strong> with hands-on experience in Oracle
-                FlexCube 14.8 core banking implementations. Currently, I am contributing to the NRB Bank FlexCube
-                upgradation project.</p>
-            <p class="secondary">I combine a deep understanding of core banking systems with a strong technical
-                foundation in AI/ML, data analysis, and full-stack development, with a proven track record of
-                engineering autonomous AI agents to optimize complex business workflows.</p>
-            <div class="contact-info">
-                <span>📧 najmulalamrivan4@gmail.com</span>
-                <span>📞 +880 1704-461723</span>
-                <span>📍 Dhaka, Bangladesh</span>
-                <span>🔗 <a href="https://github.com/Najmul193" target="_blank"
-                        style="color: var(--accent-primary); text-decoration: none;">github.com/Najmul193</a></span>
-                <span>🔗 <a href="https://linkedin.com/in/s-m-najmul-alam" target="_blank"
-                        style="color: var(--accent-primary); text-decoration: none;">linkedin.com/in/s-m-najmul-alam</a></span>
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-content">
+                <div class="hud-header">
+                    <span class="hud-sys-tag">SYS://PROFILE</span>
+                    <h3>Professional Summary</h3>
+                </div>
+                <div class="hud-stagger">
+                    <p>I am a dynamic <strong>Business Analyst &amp; AI Engineer</strong> with hands-on experience in Oracle
+                        FlexCube 14.8 core banking implementations. Currently, I am contributing to the NRB Bank FlexCube
+                        upgradation project.</p>
+                    <p class="secondary">I combine a deep understanding of core banking systems with a strong technical
+                        foundation in AI/ML, data analysis, and full-stack development, with a proven track record of
+                        engineering autonomous AI agents to optimize complex business workflows.</p>
+                    <div class="contact-info">
+                        <span>📧 najmulalamrivan4@gmail.com</span>
+                        <span>📞 +880 1704-461723</span>
+                        <span>📍 Dhaka, Bangladesh</span>
+                        <span>🔗 <a href="https://github.com/Najmul193" target="_blank">github.com/Najmul193</a></span>
+                        <span>🔗 <a href="https://linkedin.com/in/s-m-najmul-alam" target="_blank">linkedin.com/in/s-m-najmul-alam</a></span>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="experience-details" class="side-panel" data-panel="experience">
-            <h3>Professional Experience</h3>
-            <div class="timeline-item">
-                <h4>Business Analyst</h4>
-                <div class="company">Data Edge Ltd. | Mar 2026 - Present</div>
-                <ul>
-                    <li><strong>Oracle FlexCube 14.8:</strong> Driving requirement gap analysis for NRB Bank, mapping
-                        banking workflows against FlexCube functional capabilities across Core, Credit, and Treasury
-                        domains.</li>
-                    <li><strong>Parameterisation &amp; UAT:</strong> Supporting parameterisation with Oracle teams and
-                        facilitating structured UAT sessions to validate system behavior.</li>
-                    <li><strong>AI Automation:</strong> Engineered an AI-powered requirement synchronisation agent
-                        automating cross-referencing of bank assessment data against FlexCube documentation.</li>
-                    <li><strong>Data Analysis:</strong> Analyzing gap datasets to surface insights and support
-                        evidence-based implementation decisions.</li>
-                    <li><strong>Flexy Platform:</strong> Building an AI-Powered Learning Platform replacing static
-                        documents with interactive Q&amp;A, PDF-to-LLM sync, and adaptive quizzes.</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h4>Website Maintenance Executive</h4>
-                <div class="company">NexonicBD | Jun 2025 - Jan 2026</div>
-                <ul>
-                    <li>Maintained and optimized the company e-commerce platform to ensure high uptime, stability, and
-                        seamless order processing.</li>
-                    <li>Collaborated with cross-functional teams to resolve technical bugs and improve responsive UI
-                        layout.</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h4>Student Tutor</h4>
-                <div class="company">BRAC University | 2024 - 2025</div>
-                <ul>
-                    <li>Conducted interactive tutoring sessions in Linear Algebra and Fourier Analysis, helping students
-                        master complex mathematical modeling and analytical skills.</li>
-                </ul>
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-content">
+                <div class="hud-header">
+                    <span class="hud-sys-tag">SYS://CAREER</span>
+                    <h3>Experience</h3>
+                </div>
+                <div class="hud-stagger">
+                    <div class="timeline-item">
+                        <h4>Business Analyst</h4>
+                        <div class="company">Data Edge Ltd. | Mar 2026 - Present</div>
+                        <ul>
+                            <li><strong>Oracle FlexCube 14.8:</strong> Driving requirement gap analysis for NRB Bank, mapping
+                                banking workflows against FlexCube functional capabilities across Core, Credit, and Treasury
+                                domains.</li>
+                            <li><strong>Parameterisation &amp; UAT:</strong> Supporting parameterisation with Oracle teams and
+                                facilitating structured UAT sessions to validate system behavior.</li>
+                            <li><strong>AI Automation:</strong> Engineered an AI-powered requirement synchronisation agent
+                                automating cross-referencing of bank assessment data against FlexCube documentation.</li>
+                            <li><strong>Data Analysis:</strong> Analyzing gap datasets to surface insights and support
+                                evidence-based implementation decisions.</li>
+                            <li><strong>Flexy Platform:</strong> Building an AI-Powered Learning Platform replacing static
+                                documents with interactive Q&amp;A, PDF-to-LLM sync, and adaptive quizzes.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Website Maintenance Executive</h4>
+                        <div class="company">NexonicBD | Jun 2025 - Jan 2026</div>
+                        <ul>
+                            <li>Maintained and optimized the company e-commerce platform to ensure high uptime, stability, and
+                                seamless order processing.</li>
+                            <li>Collaborated with cross-functional teams to resolve technical bugs and improve responsive UI
+                                layout.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Student Tutor</h4>
+                        <div class="company">BRAC University | 2024 - 2025</div>
+                        <ul>
+                            <li>Conducted interactive tutoring sessions in Linear Algebra and Fourier Analysis, helping students
+                                master complex mathematical modeling and analytical skills.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="projects-details" class="side-panel" data-panel="projects">
-            <h3>Featured Projects</h3>
-            <div class="project-item">
-                <h4>Oracle FlexCube AI Learning Platform (Flexy)</h4>
-                <div class="tech">Next.js 15, TypeScript, Google Gemini, Node.js</div>
-                <p>Architected a full-stack AI learning platform for FlexCube 14.8, featuring bi-directional PDF-to-LLM
-                    synchronization, fault-tolerant API orchestration with circuit-breaker key rotation, and a
-                    non-deterministic adaptive quiz engine. Built ETL pipelines converting raw Excel datasets to JSON.
-                </p>
-            </div>
-            <div class="project-item">
-                <h4>Machine Vision Quality Assurance System</h4>
-                <div class="tech">Python, TensorFlow, EfficientNet-B0, Jetson Nano, STM32</div>
-                <p>Led the machine learning pipeline (data collection, augmentation, and CNN training via transfer
-                    learning) for defect classification. Deployed models on Jetson Nano, integrating with STM32 via
-                    UART/CAN to enable real-time defect sorting at sub-400ms latency.</p>
-            </div>
-            <div class="project-item">
-                <h4>Destination Diary</h4>
-                <div class="tech">MERN Stack, AI Integration, TailwindCSS</div>
-                <p>Built a full-stack web application with a responsive UI and an AI-driven recommendation engine that
-                    analyzes user preferences and reviews to recommend personalized travel itineraries.</p>
-            </div>
-            <div class="project-item">
-                <h4>LGG Brain MRI Segmentation</h4>
-                <div class="tech">Python, CNN, Deep Learning (PyTorch/Keras)</div>
-                <p>Implemented an advanced CNN architecture (U-Net based) for automated brain tumor segmentation using
-                    the TCGA-LGG dataset. Evaluated model accuracy and performance using the Dice coefficient and
-                    cross-entropy loss.</p>
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-content">
+                <div class="hud-header">
+                    <span class="hud-sys-tag">SYS://PROJECTS</span>
+                    <h3>Featured Projects</h3>
+                </div>
+                <div class="hud-stagger">
+                    <div class="project-item">
+                        <h4>Oracle FlexCube AI Learning Platform (Flexy)</h4>
+                        <div class="tech">Next.js 15, TypeScript, Google Gemini, Node.js</div>
+                        <p>Architected a full-stack AI learning platform for FlexCube 14.8, featuring bi-directional PDF-to-LLM
+                            synchronization, fault-tolerant API orchestration with circuit-breaker key rotation, and a
+                            non-deterministic adaptive quiz engine. Built ETL pipelines converting raw Excel datasets to JSON.
+                        </p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Machine Vision Quality Assurance System</h4>
+                        <div class="tech">Python, TensorFlow, EfficientNet-B0, Jetson Nano, STM32</div>
+                        <p>Led the machine learning pipeline (data collection, augmentation, and CNN training via transfer
+                            learning) for defect classification. Deployed models on Jetson Nano, integrating with STM32 via
+                            UART/CAN to enable real-time defect sorting at sub-400ms latency.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Destination Diary</h4>
+                        <div class="tech">MERN Stack, AI Integration, TailwindCSS</div>
+                        <p>Built a full-stack web application with a responsive UI and an AI-driven recommendation engine that
+                            analyzes user preferences and reviews to recommend personalized travel itineraries.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>LGG Brain MRI Segmentation</h4>
+                        <div class="tech">Python, CNN, Deep Learning (PyTorch/Keras)</div>
+                        <p>Implemented an advanced CNN architecture (U-Net based) for automated brain tumor segmentation using
+                            the TCGA-LGG dataset. Evaluated model accuracy and performance using the Dice coefficient and
+                            cross-entropy loss.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="education-details" class="side-panel" data-panel="education">
-            <h3>Education</h3>
-            <div class="timeline-item">
-                <h4>B.Sc. in Computer Science &amp; Engineering</h4>
-                <div class="company">BRAC University | 2021 - 2026</div>
-                <div class="highlight">CGPA: 3.86/4.00 | Merit-Based Scholarship (2022 - 2026)</div>
-                <p><strong>Thesis:</strong> Developing and Executing a Programmable Advanced Machine Vision System for
-                    Industrial Product Quality Assurance</p>
-                <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);"><strong>Key
-                        Coursework:</strong> Data Structures &amp; Algorithms, Artificial Intelligence, Machine
-                    Learning, Database Systems, Software Engineering, Computer Networks</p>
-            </div>
-            <div class="timeline-item">
-                <h4>Higher Secondary Certificate (HSC) — Science</h4>
-                <div class="company">Government Science College | 2020</div>
-                <div class="highlight">GPA: 5.00/5.00</div>
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-content">
+                <div class="hud-header">
+                    <span class="hud-sys-tag">SYS://EDU</span>
+                    <h3>Education</h3>
+                </div>
+                <div class="hud-stagger">
+                    <div class="timeline-item">
+                        <h4>B.Sc. in Computer Science &amp; Engineering</h4>
+                        <div class="company">BRAC University | 2021 - 2026</div>
+                        <div class="highlight">CGPA: 3.86/4.00 | Merit-Based Scholarship (2022 - 2026)</div>
+                        <p><strong>Thesis:</strong> Developing and Executing a Programmable Advanced Machine Vision System for
+                            Industrial Product Quality Assurance</p>
+                        <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);"><strong>Key
+                                Coursework:</strong> Data Structures &amp; Algorithms, Artificial Intelligence, Machine
+                            Learning, Database Systems, Software Engineering, Computer Networks</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Higher Secondary Certificate (HSC) — Science</h4>
+                        <div class="company">Government Science College | 2020</div>
+                        <div class="highlight">GPA: 5.00/5.00</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="skills-details" class="side-panel" data-panel="skills">
-            <h3>Technical Expertise</h3>
-            <div class="skill-category">
-                <h4>Banking &amp; ERP</h4>
-                <p>Oracle FlexCube, Requirement Gap Analysis, UAT Facilitation, Parameterisation, BFSI Domain</p>
-            </div>
-            <div class="skill-category">
-                <h4>AI, ML &amp; Data Analysis</h4>
-                <p>TensorFlow, Scikit-learn, CNNs (U-Net, EfficientNet), Transfer Learning, OpenCV, AI Agent
-                    Development, Pandas, NumPy, SQL, Insight Reporting</p>
-            </div>
-            <div class="skill-category">
-                <h4>Development &amp; Databases</h4>
-                <p>Next.js, TypeScript, MERN Stack, PHP, FastAPI, Streamlit, MySQL, MongoDB</p>
-            </div>
-            <div class="skill-category">
-                <h4>Embedded &amp; IoT Systems</h4>
-                <p>STM32, NVIDIA Jetson Nano, UART, CAN, GPIO, PWM, Embedded C</p>
-            </div>
-            <div class="skill-category">
-                <h4>Tools &amp; Version Control</h4>
-                <p>Git, GitHub, Jupyter Notebook, VS Code, Postman</p>
-            </div>
-            <div class="skill-category">
-                <h4>Soft Skills</h4>
-                <p>Analytical Thinking, Stakeholder Communication, Cross-functional Collaboration, Problem Solving, Time
-                    Management</p>
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="hud-content">
+                <div class="hud-header">
+                    <span class="hud-sys-tag">SYS://SKILLS</span>
+                    <h3>Technical Expertise</h3>
+                </div>
+                <div class="hud-stagger">
+                    <div class="skill-category" data-level="92">
+                        <h4>Banking &amp; ERP</h4>
+                        <p>Oracle FlexCube, Requirement Gap Analysis, UAT Facilitation, Parameterisation, BFSI Domain</p>
+                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                    </div>
+                    <div class="skill-category" data-level="88">
+                        <h4>AI, ML &amp; Data Analysis</h4>
+                        <p>TensorFlow, Scikit-learn, CNNs (U-Net, EfficientNet), Transfer Learning, OpenCV, AI Agent
+                            Development, Pandas, NumPy, SQL, Insight Reporting</p>
+                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                    </div>
+                    <div class="skill-category" data-level="85">
+                        <h4>Development &amp; Databases</h4>
+                        <p>Next.js, TypeScript, MERN Stack, PHP, FastAPI, Streamlit, MySQL, MongoDB</p>
+                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                    </div>
+                    <div class="skill-category" data-level="78">
+                        <h4>Embedded &amp; IoT Systems</h4>
+                        <p>STM32, NVIDIA Jetson Nano, UART, CAN, GPIO, PWM, Embedded C</p>
+                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                    </div>
+                    <div class="skill-category" data-level="90">
+                        <h4>Tools &amp; Version Control</h4>
+                        <p>Git, GitHub, Jupyter Notebook, VS Code, Postman</p>
+                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                    </div>
+                    <div class="skill-category" data-level="95">
+                        <h4>Soft Skills</h4>
+                        <p>Analytical Thinking, Stakeholder Communication, Cross-functional Collaboration, Problem Solving, Time
+                            Management</p>
+                        <div class="skill-bar-container"><div class="skill-bar-track"><div class="skill-bar-fill"></div></div></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -548,7 +1147,7 @@
         const canvas = document.querySelector('#bg-canvas');
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x010103); // Deep space indigo/black
+        scene.background = new THREE.Color(0x000000); // Pure black void
 
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 100);
         camera.position.set(5, 2, 8);
@@ -587,27 +1186,32 @@
         const starTexture = createCircleTexture();
         const nebulaTexture = createNebulaTexture();
 
-        // 1. Twinkling Starfield
-        const starCount = 3000;
+        // 1. Twinkling Starfield — interactive with mouse
+        const starCount = 8000;
         const starGeometry = new THREE.BufferGeometry();
         const starPositions = new Float32Array(starCount * 3);
         const starColors = new Float32Array(starCount * 3);
+        const starSizes = new Float32Array(starCount);
 
         const colorsList = [
             new THREE.Color('#ffffff'), // white
+            new THREE.Color('#cfe8f3'), // pale ice blue
             new THREE.Color('#a5f3fc'), // cyan
-            new THREE.Color('#c084fc'), // violet
+            new THREE.Color('#c4b5fd'), // soft violet
             new THREE.Color('#38bdf8'), // blue
             new THREE.Color('#e0f2fe')  // light blue
         ];
 
         const starBaseColors = [];
+        const starBaseSizes = [];
+        const starTwinkleSpeeds = [];
+        const starTwinklePhases = [];
         for (let i = 0; i < starCount; i++) {
             const u = Math.random();
             const v = Math.random();
             const theta = u * 2.0 * Math.PI;
             const phi = Math.acos(2.0 * v - 1.0);
-            const r = 40 + Math.random() * 25;
+            const r = 35 + Math.random() * 30;
 
             starPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
             starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
@@ -618,23 +1222,54 @@
             starColors[i * 3 + 1] = col.g;
             starColors[i * 3 + 2] = col.b;
             starBaseColors.push(col.clone());
+
+            // Randomized per-star size, twinkle speed, and phase
+            const baseSize = 0.12 + Math.random() * 0.5;
+            starBaseSizes.push(baseSize);
+            starSizes[i] = baseSize;
+            starTwinkleSpeeds.push(0.3 + Math.random() * 3.5); // each star blinks at its own rate
+            starTwinklePhases.push(Math.random() * Math.PI * 2); // random starting phase
         }
 
         starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
         starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+        starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
 
-        const starMaterial = new THREE.PointsMaterial({
-            size: 0.15,
-            vertexColors: true,
-            map: starTexture,
+        // Custom shader material for per-star size control
+        const starMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                starTexture: { value: starTexture }
+            },
+            vertexShader: `
+                attribute float size;
+                varying vec3 vColor;
+                void main() {
+                    vColor = color;
+                    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                    gl_PointSize = size * (300.0 / -mvPosition.z);
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `,
+            fragmentShader: `
+                uniform sampler2D starTexture;
+                varying vec3 vColor;
+                void main() {
+                    gl_FragColor = vec4(vColor, 1.0) * texture2D(starTexture, gl_PointCoord);
+                }
+            `,
             transparent: true,
-            opacity: 0.9,
             depthWrite: false,
-            sizeAttenuation: true
+            blending: THREE.AdditiveBlending,
+            vertexColors: true
         });
 
         const starField = new THREE.Points(starGeometry, starMaterial);
         scene.add(starField);
+
+        // Mouse tracking in normalized device coordinates for star interaction
+        const mouseNDC = new THREE.Vector2(9999, 9999);
+        const raycaster = new THREE.Raycaster();
+        raycaster.params.Points.threshold = 1.5;
 
         // 2. Space Nebulae
         const nebulaCount = 20;
@@ -668,11 +1303,11 @@
         nebulaGeometry.setAttribute('color', new THREE.BufferAttribute(nebulaColors, 3));
 
         const nebulaMaterial = new THREE.PointsMaterial({
-            size: 20,
+            size: 18,
             vertexColors: true,
             map: nebulaTexture,
             transparent: true,
-            opacity: 0.12,
+            opacity: 0.03,
             blending: THREE.AdditiveBlending,
             depthWrite: false,
             sizeAttenuation: true
@@ -688,10 +1323,10 @@
         renderer.outputEncoding = THREE.sRGBEncoding;
 
         // Set background to black color to serve as base void
-        scene.background = new THREE.Color(0x000000);
+        scene.background = new THREE.Color(0x000000); // Keep pure black for deep space
 
         // Add explicit scene lighting to make the 3D model look bright and clear
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.08);
         scene.add(ambientLight);
 
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -710,7 +1345,7 @@
                 map: texture,
                 side: THREE.BackSide,
                 transparent: true,
-                opacity: 0.30 // dimmed space background brightness
+                opacity: 0.05  // Nearly invisible — just the faintest cosmic tint
             });
             skySphere = new THREE.Mesh(skyGeo, skyMat);
             scene.add(skySphere);
@@ -900,29 +1535,51 @@
 
             // Slowly rotate space background to give dynamic life
             if (skySphere) {
-                skySphere.rotation.y += 0.00006; // Rotate high-resolution cosmic sky sphere
+                skySphere.rotation.y += 0.00004;
             }
             if (starField) {
-                starField.rotation.y += 0.00012;
+                starField.rotation.y += 0.00008;
 
-                // Animate random twinkling effect for stars
+                // Animate twinkling: each star has its own speed and phase
                 if (starGeometry && starBaseColors.length > 0) {
                     const colorsAttr = starGeometry.attributes.color.array;
+                    const sizesAttr = starGeometry.attributes.size.array;
                     const time = clock.getElapsedTime();
+
+                    // Project mouse into world space for star interaction
+                    raycaster.setFromCamera(mouseNDC, camera);
+                    const mouseRay = raycaster.ray;
+
                     for (let i = 0; i < starCount; i++) {
-                        const phase = i * 9.7;
-                        const twinkle = 0.35 + 0.65 * Math.sin(time * 3.5 + phase);
+                        // Per-star twinkle with unique speed and phase
+                        const speed = starTwinkleSpeeds[i];
+                        const phase = starTwinklePhases[i];
+                        const twinkle = 0.15 + 0.85 * Math.pow(Math.abs(Math.sin(time * speed + phase)), 2.0);
                         const baseCol = starBaseColors[i];
-                        colorsAttr[i * 3] = baseCol.r * twinkle;
-                        colorsAttr[i * 3 + 1] = baseCol.g * twinkle;
-                        colorsAttr[i * 3 + 2] = baseCol.b * twinkle;
+
+                        // Mouse proximity interaction — stars near cursor brighten
+                        const sx = starPositions[i * 3];
+                        const sy = starPositions[i * 3 + 1];
+                        const sz = starPositions[i * 3 + 2];
+                        const starPos = new THREE.Vector3(sx, sy, sz);
+                        const distToRay = mouseRay.distanceToPoint(starPos);
+                        const proxGlow = Math.max(0, 1.0 - distToRay / 5.0); // stars within radius 5 glow
+                        const brightMult = twinkle + proxGlow * 1.2;
+
+                        colorsAttr[i * 3] = Math.min(1, baseCol.r * brightMult);
+                        colorsAttr[i * 3 + 1] = Math.min(1, baseCol.g * brightMult);
+                        colorsAttr[i * 3 + 2] = Math.min(1, baseCol.b * brightMult);
+
+                        // Size pulse near cursor
+                        sizesAttr[i] = starBaseSizes[i] * (1 + proxGlow * 2.5);
                     }
                     starGeometry.attributes.color.needsUpdate = true;
+                    starGeometry.attributes.size.needsUpdate = true;
                 }
             }
             if (nebulae) {
-                nebulae.rotation.y -= 0.00008;
-                nebulae.rotation.x += 0.00004;
+                nebulae.rotation.y -= 0.00005;
+                nebulae.rotation.x += 0.00003;
             }
 
             renderer.render(scene, camera);
@@ -932,7 +1589,7 @@
         animate();
 
         // ==========================================
-        // Interactive Magic Space Cursor Trail
+        // Sci-Fi Space Cursor Trail — subtle plasma warp
         // ==========================================
         const cursorCanvas = document.createElement('canvas');
         cursorCanvas.id = 'magic-cursor-canvas';
@@ -957,55 +1614,94 @@
         });
 
         const particles = [];
-        const mouse = { x: null, y: null };
+        const mouse = { x: null, y: null, prevX: null, prevY: null };
 
-        class SparkleParticle {
-            constructor(x, y) {
+        class PlasmaParticle {
+            constructor(x, y, vx, vy) {
                 this.x = x;
                 this.y = y;
-                this.size = Math.random() * 3.5 + 1.2;
-                this.speedX = (Math.random() - 0.5) * 1.8;
-                this.speedY = (Math.random() - 0.5) * 1.8 - 0.6; // upward draft
+                this.size = Math.random() * 1.5 + 0.3;
+                // Inherit velocity from cursor motion + small random drift
+                this.speedX = vx * 0.15 + (Math.random() - 0.5) * 0.4;
+                this.speedY = vy * 0.15 + (Math.random() - 0.5) * 0.4;
+                // Cool sci-fi tones: ice blue, cyan, white, faint violet
                 const colors = [
-                    'rgba(245, 158, 11, ',  // warm orange
-                    'rgba(251, 191, 36, ',  // warm gold
-                    'rgba(253, 224, 71, ',  // bright yellow
-                    'rgba(56, 189, 248, ',  // space cyan
-                    'rgba(192, 132, 252, '  // cosmos purple
+                    [140, 220, 255],  // ice blue
+                    [56, 189, 248],   // cyan
+                    [220, 240, 255],  // near-white blue
+                    [170, 180, 255],  // soft lavender
+                    [255, 255, 255],  // pure white
                 ];
-                this.colorBase = colors[Math.floor(Math.random() * colors.length)];
-                this.opacity = 1.0;
-                this.decay = Math.random() * 0.015 + 0.01;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.opacity = 0.6 + Math.random() * 0.4;
+                this.decay = 0.008 + Math.random() * 0.012;
+                this.life = 1.0;
             }
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                this.opacity -= this.decay;
-                if (this.size > 0.1) this.size -= 0.04;
+                this.speedX *= 0.97;
+                this.speedY *= 0.97;
+                this.life -= this.decay;
+                this.opacity = this.life * 0.8;
             }
-            draw() {
-                ctx.fillStyle = this.colorBase + this.opacity + ')';
+            draw(ctx) {
+                if (this.life <= 0) return;
+                const [r, g, b] = this.color;
+                // Glow layer
+                const glowSize = this.size * 3;
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowSize);
+                gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.5})`);
+                gradient.addColorStop(0.4, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.15})`);
+                gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+                ctx.fillStyle = gradient;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, glowSize, 0, Math.PI * 2);
+                ctx.fill();
+                // Core dot
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;  
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
         window.addEventListener('mousemove', (e) => {
+            mouse.prevX = mouse.x;
+            mouse.prevY = mouse.y;
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-            // Spawn particles
-            for (let i = 0; i < 3; i++) {
-                particles.push(new SparkleParticle(mouse.x, mouse.y));
+
+            // Update NDC for star interaction
+            mouseNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+            // Calculate cursor velocity
+            const vx = mouse.prevX !== null ? mouse.x - mouse.prevX : 0;
+            const vy = mouse.prevY !== null ? mouse.y - mouse.prevY : 0;
+            const speed = Math.sqrt(vx * vx + vy * vy);
+
+            // Spawn fewer particles — quality over quantity
+            const count = Math.min(Math.floor(speed * 0.15) + 1, 3);
+            for (let i = 0; i < count; i++) {
+                particles.push(new PlasmaParticle(
+                    mouse.x + (Math.random() - 0.5) * 4,
+                    mouse.y + (Math.random() - 0.5) * 4,
+                    vx, vy
+                ));
             }
         });
 
         window.addEventListener('touchmove', (e) => {
             if (e.touches.length > 0) {
+                mouse.prevX = mouse.x;
+                mouse.prevY = mouse.y;
                 mouse.x = e.touches[0].clientX;
                 mouse.y = e.touches[0].clientY;
-                for (let i = 0; i < 2; i++) {
-                    particles.push(new SparkleParticle(mouse.x, mouse.y));
+                const vx = mouse.prevX !== null ? mouse.x - mouse.prevX : 0;
+                const vy = mouse.prevY !== null ? mouse.y - mouse.prevY : 0;
+                for (let i = 0; i < 1; i++) {
+                    particles.push(new PlasmaParticle(mouse.x, mouse.y, vx, vy));
                 }
             }
         });
@@ -1015,8 +1711,8 @@
             for (let i = particles.length - 1; i >= 0; i--) {
                 const p = particles[i];
                 p.update();
-                p.draw();
-                if (p.opacity <= 0 || p.size <= 0.1) {
+                p.draw(ctx);
+                if (p.life <= 0) {
                     particles.splice(i, 1);
                 }
             }
